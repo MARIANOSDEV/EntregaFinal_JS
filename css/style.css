@@ -1,0 +1,184 @@
+*
+{
+    margin:0;
+    padding:0;
+}
+
+/* trabajo sobre el header */
+
+header
+{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    height: 80px;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+}
+
+#imgHeader
+{
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    height: 90%;
+    top: 4px;
+    left: 30px;
+}
+
+
+h1
+{
+    width: 100%;
+    height: 100%;
+}
+
+h1 #blanco
+{
+    text-align: right;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
+    height: 34%;
+    width: 100%;
+}
+
+
+h1 #rojo
+{
+    text-align: right;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: red;
+    height: 33%;
+    width: 100%;
+}
+
+/* trabajo sobre el navegador */
+
+nav
+{
+    display: inline-block;  
+    width: 100%;
+    height: 28px;
+    
+}
+
+.hList
+{
+    width: 100%;
+    position: fixed;
+    top: 80px;
+    text-align: center;
+    background-color: rgb(170, 0, 0);
+}
+
+nav li
+{
+    display:inline-block;
+    padding:5px 10px;
+    text-align:center;
+}
+
+nav li:hover
+{
+transform: scale(1.3,1.3);
+text-decoration: double;
+}
+
+.hList li a
+{
+    color: white;
+    text-decoration: none;
+}
+
+/* trabajo sobre el main */
+
+.MainIndex
+{
+    background-image: url(../multimedia/fondohistoria.jpg);
+    background-repeat: no-repeat;
+    background-size: 20%;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.VidEstadio
+{
+    display: inline-block;
+    top: 150px;
+    width: 60%;
+}
+
+.VidEstadio p
+{
+    font-size: 30px;
+    margin: 5px;
+}
+
+.Historia
+{
+    display: inline-block;
+    margin-top: 10px;
+    width: 70%;
+}
+
+.MainTit
+{
+    margin: 20px;
+    margin-left: 80px;
+    width: 100%;
+    display: block;
+}
+
+.subtit
+{
+    margin-left: 30PX;
+}
+
+.texto
+{
+    margin-left: 80px;
+}
+
+.maingal
+{
+    margin: 20px;
+    margin-left: 80px;
+    width: 100%;
+    display: block;
+}
+
+.imggal
+{
+    height: 40%;
+    width: 40%;
+}
+
+.mainform
+{
+    display: inline-block;
+    width: 100%;
+}
+
+form
+{
+    margin: 50px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* trabajo sobre el footer */
+
+footer
+{
+    display: inline-block;
+    font-size: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+}
