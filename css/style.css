@@ -58,22 +58,37 @@ float: right;
 /* PARA MOVIL FLEXBOX */
 @media screen and (max-width:576px)
 {
-#distribucion
-{
-    height: 400px;
-    display: flex;
-    flex-direction: column-reverse;
-    background-color: red;
-}
-#ImgLogo
+#noticiasPC
 {
     display: none;
 }
+#noticiasCELU
+{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+#novedades p
+{
+    text-align: center;
+    font-size: x-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+#ImgLogo
+{
+    transform: scale(0.7,0.7);
+}
+
 }
 
 /* PARA ESCRITORIO GRID BOOTS */
 @media screen and (min-width:576px)
 {
+
+#noticiasCELUS
+{
+    display: none;
+}
 #distribucion
 {
     
@@ -97,8 +112,8 @@ float: right;
 
 #ImgLogo:hover
 {
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     opacity: 100%;
     margin: 40px;
     transition: width 1s, height 1s, transform 1s, opacity 3s;
