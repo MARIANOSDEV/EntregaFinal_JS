@@ -1,0 +1,17 @@
+.mainform
+        {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 5px;
+        align-items: center;
+        justify-content: center;       
+
+        .mainform--content
+            {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            width: 40%; 
+            }
+}
