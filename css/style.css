@@ -1,99 +1,80 @@
 * {
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 html {
-  height: 100%;
-}
+  height: 100%; }
 
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
-}
+  min-height: 100%; }
 
 header {
   width: 100%;
-  height: 100%;
-}
+  height: 100%; }
 
 #imgHeader {
   height: auto;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
+  object-fit: cover; }
 
 @media screen and (max-width: 576px) {
   #imgHeader {
     width: 250%;
-    float: right;
-  }
-}
+    float: right; } }
+
 @media screen and (min-width: 576px) {
   #imgHeader {
     transition: width 1s;
-    float: right;
-  }
+    float: right; }
   #imgHeader:hover {
     width: 150%;
     float: right;
-    transition: width 2s;
-  }
-}
+    transition: width 2s; } }
+
 @media screen and (max-width: 576px) {
   #escritorio {
     display: flex;
-    flex-direction: column;
-  }
+    flex-direction: column; }
   #actualidad {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-content: center;
-  }
+    align-content: center; }
   #actualidad h2 {
-    display: none;
-  }
+    display: none; }
   #novedades1 {
-    padding: 10px;
-  }
+    padding: 10px; }
   #novedades2 {
-    padding: 10px;
-  }
+    padding: 10px; }
   #novedades3 {
-    padding: 10px;
-  }
+    padding: 10px; }
   #fixture {
-    display: none;
-  }
+    display: none; }
   .buttonsmain {
     min-width: 60vw;
     display: flex;
     justify-content: space-evenly;
-    padding: 20px;
-  }
-  .buttonsmain a {
-    text-decoration: none;
-    font-size: 40px;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    margin: 2.5px;
-    text-align: center;
-    background: rgba(255, 0, 0, 0.817);
-    color: #f1f1f1;
-    border-radius: 50%;
-    box-shadow: 2px 2px 5px rgba(255, 1, 1, 0.416);
-    transition: all 0.4s ease-in-out;
-  }
+    padding: 20px; }
+    .buttonsmain a {
+      text-decoration: none;
+      font-size: 40px;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      margin: 2.5px;
+      text-align: center;
+      background: rgba(255, 0, 0, 0.817);
+      color: #f1f1f1;
+      border-radius: 50%;
+      box-shadow: 2px 2px 5px rgba(255, 1, 1, 0.416);
+      transition: all .4s ease-in-out; }
   #escritorio h3 {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 30px;
-    color: RED;
-  }
-}
+    color: RED; } }
+
 /* PARA ESCRITORIO GRID BOOTS */
 @media screen and (min-width: 576px) {
   #escritorio {
@@ -101,232 +82,193 @@ header {
     display: grid;
     grid-template-rows: 100px 2fr 2fr;
     grid-template-columns: 20% 40% 40%;
-    grid-template-areas: "a1 a1 a1" "a2 a2 a3" "a2 a2 a4";
-  }
+    grid-template-areas: "a1 a1 a1" "a2 a2 a3" "a2 a2 a4"; }
   #actualidad {
     grid-area: a1;
     display: flex;
     flex-direction: row;
     justify-content: right;
-    align-content: center;
-  }
+    align-content: center; }
   #redes {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     transform: translatey(35px);
-    text-shadow: 0px 0px 10px #FFF, -4px 2px 12px #DCB500, 0px -6px 14px #FF7A00, 0px -12px 10px #FF6300, 0px -20px 10px #FF4400, 0px -20px 10px red, 0px -20px 10px red;
-    transition: 2s;
-  }
+    transition: 2s; }
   #redes:hover {
     transform: translate(20px, 45px) scale(1.3, 1.3);
-    text-shadow: 0px 0px 10px #FFF, 4px 2px 12px #DCB500, -4px 2px 12px #DCB500, 0px -6px 14px #FF7A00, 0px -12px 14px #FF6300, 0px -12px 14px #FF6300, 0px -12px 14px #FF6300, 0px -20px 14px #FF4400, 0px -30px 14px red, 0px -30px 14px red, 0px -30px 14px red, 0px -30px 14px red, 0px -30px 14px red;
-    transition: 2s;
-  }
+    transition: 2s; }
   .buttonsmain {
     min-width: 60vw;
     display: flex;
     justify-content: space-evenly;
-    padding: 20px;
-  }
-  .buttonsmain a {
-    text-decoration: none;
-    font-size: 40px;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    margin: 2.5px;
-    text-align: center;
-    background: rgba(255, 0, 0, 0.817);
-    color: #f1f1f1;
-    border-radius: 50%;
-    box-shadow: 2px 2px 5px rgba(255, 1, 1, 0.416);
-    transition: all 0.4s ease-in-out;
-  }
+    padding: 20px; }
+    .buttonsmain a {
+      text-decoration: none;
+      font-size: 40px;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      margin: 2.5px;
+      text-align: center;
+      background: rgba(255, 0, 0, 0.817);
+      color: #f1f1f1;
+      border-radius: 50%;
+      box-shadow: 2px 2px 5px rgba(255, 1, 1, 0.416);
+      transition: all .4s ease-in-out; }
   .buttonsmain a:hover {
     transform: scale(1.3);
-    transition: all 0.3s;
-  }
+    transition: all .3s; }
   #escritorio h3 {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 2.5vw;
-    color: RED;
-  }
+    color: RED; }
   #fixture {
     transform: translateY(20px);
     padding: 10px;
     width: auto;
     height: 150px;
-    transition: 3s;
-  }
+    transition: 3s; }
   #fixture:hover {
     transform: scale(1.6, 1.6) translate(100px, -50px);
-    transition: 3s;
-  }
+    transition: 3s; }
   #novedades1 {
     grid-area: a2;
     display: flex;
     flex-direction: column;
     padding: 10px;
     align-items: center;
-    justify-items: center;
-  }
-  #novedades1 h5 {
-    font-size: 2vw;
-  }
+    justify-items: center; }
+    #novedades1 h5 {
+      font-size: 2vw; }
   #novedades2 {
     grid-area: a3;
-    padding: 10px;
-  }
-  #novedades2 h5 {
-    font-size: 2vw;
-  }
+    padding: 10px; }
+    #novedades2 h5 {
+      font-size: 2vw; }
   #novedades3 {
     grid-area: a4;
-    padding: 10px;
-  }
-  #novedades3 h5 {
-    font-size: 2vw;
-  }
-}
+    padding: 10px; }
+    #novedades3 h5 {
+      font-size: 2vw; } }
+
 #titulosflex {
   display: flex;
   align-content: center;
-  justify-content: space-evenly;
-}
+  justify-content: space-evenly; }
 
 #titulosflex div {
-  padding: 20px;
-}
+  padding: 20px; }
 
 #titulosflex ul p {
   font-size: x-large;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  color: RED;
-}
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: RED; }
 
 #copasflex {
   display: flex;
   width: 100%;
   align-content: center;
-  justify-content: space-evenly;
-}
+  justify-content: space-evenly; }
 
 #copas1 {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-content: center;
-  justify-content: space-evenly;
-}
+  justify-content: space-evenly; }
 
 #copas2 {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-content: center;
-  justify-content: space-evenly;
-}
+  justify-content: space-evenly; }
 
 @media screen and (max-width: 576px) {
   #titulosflex {
     display: flex;
-    flex-direction: column;
-  }
+    flex-direction: column; }
   #copasflex {
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: space-between;
-  }
+    justify-content: space-between; }
   #copas1 {
     display: flex;
     flex-direction: row;
     align-content: center;
-    justify-content: space-evenly;
-  }
+    justify-content: space-evenly; }
   #copas2 {
     display: flex;
     flex-direction: row;
     align-content: center;
-    justify-content: space-evenly;
-  }
-}
+    justify-content: space-evenly; } }
+
 #ImgLogo {
   margin: 10px;
   width: 80px;
   height: 80px;
   border-radius: 20px;
-  -o-object-position: center;
-     object-position: center;
+  object-position: center;
   opacity: 40%;
-  transition: 2s;
-}
+  transition: 2s; }
 
 #ImgLogo:hover {
   width: 100px;
   height: 100px;
   opacity: 100%;
-  transition: width 2s, height 2s, transform 2s, opacity 3s;
-}
+  transition: width 2s, height 2s, transform 2s, opacity 3s; }
 
 #galeriadelrojo {
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 20px;
   width: 100%;
   height: 20px;
   font-size: 40px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   display: inline-block;
-  text-align: center;
-  color: RED;
-}
+  text-align: left;
+  color: RED; }
 
 @media screen and (max-width: 576px) {
   #galeriadelrojo {
     font-size: 20px;
     margin-top: 5px;
-    margin-bottom: 5px;
-  }
-}
+    margin-bottom: 5px; } }
+
 #divcon {
   max-width: 90%;
   height: AUTO;
-  margin-bottom: 50px;
-}
+  margin-bottom: 50px; }
 
 #estadio {
-  margin: 20px;
-}
+  margin: 20px; }
 
 #plantel {
-  margin: 20px;
-}
+  margin: 20px; }
 
 #textogaleria {
   font-size: small;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+  font-family: Verdana, Geneva, Tahoma, sans-serif; }
 
 footer p {
   color: white;
   background-color: RED;
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 footer {
   width: 100%;
   max-height: 30px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: xx-small;
   text-align: center;
-  margin-top: auto;
-}
+  margin-top: auto; }
 
 .buttons {
   min-width: 95vw;
   display: flex;
   justify-content: right;
-  background-color: rgb(212, 7, 7);
-}
+  background-color: #d40707; }
 
 .buttons a {
   text-decoration: none;
@@ -340,12 +282,10 @@ footer {
   color: #f1f1f1;
   border-radius: 50%;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  transition: all 0.4s ease-in-out;
-}
+  transition: all .4s ease-in-out; }
 
 .buttons a:hover {
-  transform: scale(1.2);
-}
+  transform: scale(1.2); }
 
 @media screen and (max-width: 576px) {
   .MainTit {
@@ -354,36 +294,31 @@ footer {
     width: 100%;
     height: auto;
     justify-content: center;
-    padding: 10px;
-  }
-  .MainTit #disciplinas {
-    display: flex;
-    padding-left: 10px;
-    padding-top: 10px;
-    color: RED;
-    font-size: 6vw;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  .MainTit #MainTit--importantes {
-    display: flex;
-    width: 90%;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .MainTit h2 {
-    color: RED;
-    font-size: 5vw;
-  }
-  .MainTit img {
-    margin: 10px;
-    width: 60VW;
-    height: AUTO;
-  }
-}
+    padding: 10px; }
+    .MainTit #disciplinas {
+      display: flex;
+      padding-left: 10px;
+      padding-top: 10px;
+      color: RED;
+      font-size: calc(6vw);
+      width: 100%;
+      align-items: center;
+      justify-content: center; }
+    .MainTit #MainTit--importantes {
+      display: flex;
+      width: 90%;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; }
+    .MainTit h2 {
+      color: RED;
+      font-size: calc(5vw); }
+    .MainTit img {
+      margin: 10px;
+      width: 60VW;
+      height: AUTO; } }
+
 @media screen and (min-width: 576px) {
   .MainTit {
     display: flex;
@@ -392,41 +327,35 @@ footer {
     height: auto;
     align-content: center;
     justify-content: space-around;
-    padding: 25px;
-  }
-  .MainTit #disciplinas {
-    display: flex;
-    padding-left: 25px;
-    padding-top: 25px;
-    color: RED;
-    font-size: 4vw;
-    font-weight: bold;
-    width: 100%;
-    align-items: center;
-    justify-content: left;
-  }
-  .MainTit #MainTit--importantes {
-    display: flex;
-    width: 45%;
-    flex-direction: column;
-    align-content: center;
-  }
-  .MainTit h2 {
-    color: RED;
-    font-size: 3vw;
-  }
-}
+    padding: 25px; }
+    .MainTit #disciplinas {
+      display: flex;
+      padding-left: 25px;
+      padding-top: 25px;
+      color: RED;
+      font-size: calc(4vw);
+      font-weight: bold;
+      width: 100%;
+      align-items: center;
+      justify-content: left; }
+    .MainTit #MainTit--importantes {
+      display: flex;
+      width: 45%;
+      flex-direction: column;
+      align-content: center; }
+    .MainTit h2 {
+      color: RED;
+      font-size: calc(3vw); } }
+
 .mainform {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin: 5px;
   align-items: center;
-  justify-content: center;
-}
-.mainform .mainform--content {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  width: 40%;
-}/*# sourceMappingURL=style.css.map */
+  justify-content: center; }
+  .mainform .mainform--content {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 40%; }

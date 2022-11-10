@@ -2,12 +2,13 @@
 {
     margin-top: 20px;
     margin-bottom: 20px;
+    margin-left: 20px;
     width: 100%;
     height: 20px;
     font-size: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display: inline-block;
-    text-align: center;
+    text-align: left;
     color: $color-principal;
 }
 @media screen and (max-width:576px)
