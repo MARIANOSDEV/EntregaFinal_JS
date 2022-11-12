@@ -1,3 +1,5 @@
+@import "mixin";
+
 @media screen and (max-width:576px)
 {    
     .MainTit
@@ -14,7 +16,7 @@
             display: flex;
             padding-left: 10px;
             padding-top: 10px;
-            color: $color-principal;
+            @include estilos_titulos ("titulo", Verdana)
             font-size: calc(6vw);
             width: 100%;
             align-items: center;
@@ -32,7 +34,7 @@
             }
             h2
             {
-                color: $color-principal;
+                @include estilos_titulos ("subtitulo", Tahoma)
                 font-size: calc(5vw);
             }
             img

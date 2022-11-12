@@ -299,7 +299,9 @@ footer {
       display: flex;
       padding-left: 10px;
       padding-top: 10px;
-      color: RED;
+      color: "titulo";
+      font-family: Verdana;
+      color: red;
       font-size: calc(6vw);
       width: 100%;
       align-items: center;
@@ -312,7 +314,9 @@ footer {
       align-items: center;
       justify-content: center; }
     .MainTit h2 {
-      color: RED;
+      color: "subtitulo";
+      font-family: Tahoma;
+      color: #120000;
       font-size: calc(5vw); }
     .MainTit img {
       margin: 10px;
