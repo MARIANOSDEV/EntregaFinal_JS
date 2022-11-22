@@ -269,7 +269,6 @@ header {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 20px;
-  width: 100%;
   height: 20px;
   font-size: 40px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -527,7 +526,6 @@ footer p {
 .mainform {
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin: 5px;
   align-items: center;
   justify-content: center;
