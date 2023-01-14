@@ -73,7 +73,7 @@ function socios (valorCategoria, suCategoria, socio) {
     alert(`Usted es categoria ${suCategoria}, el valor de la cuota es de ${valorCategoria}.`)
     let cantidadDeCuotas = parseInt(prompt("Cuantas cuotas desea abonar?"))
     while (isNaN(cantidadDeCuotas)){
-    cantidadDeCuotas = parseInt(prompt("Cuantas cuotas desea abonar? (favor de ingresar expresion numerica. Ej: 3.."))}
+    cantidadDeCuotas = parseInt(prompt("Cuantas cuotas desea abonar? (favor de ingresar expresion numerica. Ej: 3..)"))}
     let valorPorCategoria = parseInt(valorCategoria)
     let valor = cantidadDeCuotas*valorPorCategoria
             alert(`Socio: ${socio}
