@@ -15,10 +15,9 @@
 //>= 18 años = Activo
 
 alert("Bienvenido! Usted esta ingresando a la web de gestion de Cuotas Sociales del Club. Para ayudarlo a poder gestionar su tramite por favor brindenos la siguiente informacion.")
-let socioConfirmacion = prompt("Ya sos socio? si/no")
+let socioConfirmacion = prompt("Ya es socio? si/no")
 while (socioConfirmacion != "si" && socioConfirmacion != "no")
-{alert("Por favor ingrese si o no!")
-socioConfirmacion = prompt("Ya sos socio? si/no")
+{socioConfirmacion = prompt("Para poder ayudarlo correctamente, necesitamos nos cuente si es Socio indicando si o no.")
 }
 //Los socios tienen la posibilidad de calcular y abonar la cuota online.
 //Para ello analizamos que categoria de socio corresponde. con esto mas la cantidad de cuotas que desea abonar le daremos el cupon de pago.
