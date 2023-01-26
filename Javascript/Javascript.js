@@ -20,7 +20,7 @@ socios.push(socio1, socio2, socio3, socio4, socio5)
 function consultarPadronSocios(tomaArray){
     console.log("Padron de socios:")
     for(let asociado of tomaArray){
-        console.log(`Socio N°: ${asociado.id}// `, asociado.nombre,`,` asociado.categoria,`,` `Cuota: $${asociado.cuotaValor},`, `Ultimo abono: Mes ${asociado.ultimoMesPago} del año ${asociado.ultimoAnioPago}.`)
+        console.log(`Socio N°: ${asociado.id}// , ${asociado.nombre}, ${asociado.categoria}, Cuota: $${asociado.cuotaValor}, Ultimo abono: Mes ${asociado.ultimoMesPago} del año ${asociado.ultimoAnioPago}.`)
     }
 }
 function detectarCategoriaCorrecta(rangoEdad){
@@ -68,7 +68,7 @@ function ingresarNuevoSocio(tomaArray){
     const nuevoSocio = new Socio(tomaArray.length+1, nombreNuevoSocio, categoriaCorrecta, cuotaValor, ultimoMesPago, ultimoAnioPago)
     tomaArray.push(nuevoSocio)
     console.log(`${nombreNuevoSocio} agradecemos su pago para confirmar, bienvenido a C.A.I. ya es el socio n° ${tomaArray.length}!`)
- }
+}
 
 function buscarSocio(tomaArray){
     let socioBusqueda = prompt("Ingrese su nombre o apellido.")
