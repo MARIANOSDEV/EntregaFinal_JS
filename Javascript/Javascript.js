@@ -1,88 +1,127 @@
-//Socios:
-//Cotizador de Cuotas sociales
-//Asociarse
-//Pago de cuotas
-
-//Cotizador por categorias: Infantil menores de 12 años - Cadete menores de 18 años - Activo + 18 años.
-//Infantil: 2000
-//Cadete: 2500
-//Activo: 3000
-//Socios nuevos deben abonar 3 cuotas juntas.
-
-//Validador de categoria
-//<12 años = Infantil
-//>= 12 años o < 18 años = Cadete
-//>= 18 años = Activo
-
-alert("Bienvenido! Usted esta ingresando a la web de gestion de Cuotas Sociales del Club. Para ayudarlo a poder gestionar su tramite por favor brindenos la siguiente informacion.")
-let socioConfirmacion = prompt("Ya es socio? si/no")
-while (socioConfirmacion != "si" && socioConfirmacion != "no")
-{socioConfirmacion = prompt("Para poder ayudarlo correctamente, necesitamos nos cuente si es Socio indicando si o no.")
-}
-//Los socios tienen la posibilidad de calcular y abonar la cuota online.
-//Para ello analizamos que categoria de socio corresponde. con esto mas la cantidad de cuotas que desea abonar le daremos el cupon de pago.
-if(socioConfirmacion.toLowerCase() == "si" ){
-    let miembros = ""
-    let valorTotal = 0
-        do{
-        let socioNombre = prompt("Nombre de Socio.")
-        while (isNaN(socioNombre) == false){
-        socioNombre = prompt("Por favor ingrese su nombre correctamente!")
-        }
-        console.log(socioNombre)
-        let rango = parseInt(prompt(`Hola ${socioNombre}. Por favor ingresa tu edad.`))
-        while (isNaN(rango)){
-        rango = parseInt(prompt("Por favor ingrese su edad correctamente!"))
-        }
-        if (rango < 12 ){
-            let valor = 2000
-            let categoria = "infantil"
-            valorTotal = valorTotal + socios(valor, categoria, socioNombre)
-        }
-        else if (rango >= 12 && rango < 18){
-            let valor = 2500
-            let categoria = "cadete"
-            valorTotal = valorTotal + socios(valor, categoria, socioNombre)
-        }
-        else if(rango >= 18){
-            let valor = 3000
-            let categoria = "activo"
-            valorTotal = valorTotal + socios(valor, categoria, socioNombre)
-        }
-        miembros = prompt("Desea gestionar otro socio en la misma consulta? si/no")
-        }
-        while (miembros != "no")
-    alert(`El cupon de pago se imprimira por un valor total de $${valorTotal}
-    Por favor, chequear en "informacion util" por medios de pagos.`)
-    console.log(`Total a abonar $${valorTotal}`)
+class Socio {
+    constructor(id, nombre, categoria, cuotaValor, ultimoMesPago, ultimoAnioPago){
+        this.id = id,
+        this.nombre = nombre,
+        this.categoria = categoria,
+        this.cuotaValor = cuotaValor
+        this.ultimoMesPago = ultimoMesPago
+        this.ultimoAnioPago = ultimoAnioPago
     }
-    //Si llegara alguien sin ser socio, debemos comunicarle la forma para asociarse.
-    //Para ello deberemos saber su categoria, e informarle que debe abonar 3 cuotas o mas por unica vez.
-else
-{
-    let nuevoSocio = prompt(`Es muy importante para el Club contar con tu apoyo.
-    Te invitamos a asociarte, y te contamos que para ello no tendras que abonar la afiliacion.
-    Para comenzar con tu gestion, contanos tu nombre!`)
-    let nombreCompleto = nuevoSocio + " " + prompt(`${nuevoSocio}, un placer! por favor comentanos tu apellido.`)
-    alert(`Perfecto ${nombreCompleto}, muy pronto habilitaremos la seccion completa para asociarte!`)
+}
+const socio1 = new Socio(1,"Mariano Sanchez","Socio Activo", 3000, 1, 2023)
+const socio2 = new Socio(2,"Magali Sanchez","Socio Infantil", 2000, 1, 2023)
+const socio3 = new Socio(3,"Marcela Roberto","Socio Activo", 3000, 12, 2022)
+const socio4 = new Socio(4,"Florencia Sanchez","Socio Activo", 3000, 1, 2023)
+const socio5 = new Socio(5,"Luciano Rondo","Socio Cadete", 2500, 12, 2022)
+
+const socios = []
+socios.push(socio1, socio2, socio3, socio4, socio5)
+
+function consultarPadronSocios(tomaArray){
+    console.log("Padron de socios:")
+    for(let asociado of tomaArray){
+        console.log(`Socio N°: ${asociado.id}`, asociado.nombre, asociado.categoria, `Cuota: $${asociado.cuotaValor}`, `Ultimo abonado: Mes ${asociado.ultimoMesPago} del año ${asociado.ultimoAnioPago}.`)
+    }
+}
+function detectarCategoriaCorrecta(rangoEdad){
+    if (rangoEdad < 12 ){
+        return "Socio Infantil"
+    }
+    else if (rangoEdad >= 12 && rangoEdad < 18){
+        return "Socio Cadete"
+    }
+    else if(rangoEdad >= 18){
+        return "Socio Activo"
+        }
 }
 
-//Solo por unica vez, deberas abonar 3 cuotas o mas. En los proximos pagos, podras abonar mensualmente.
+function cuotaPorCategoria(rangoEdad){
+    if (rangoEdad < 12 ){
+        return 2000
+    }
+    else if (rangoEdad >= 12 && rangoEdad < 18){
+        return 2500
+    }
+    else if(rangoEdad >= 18){
+        return 3000
+}
+}
 
-function socios (valorCategoria, suCategoria, socio) {
-    alert(`Usted es categoria ${suCategoria}, el valor de la cuota es de ${valorCategoria}.`)
-    let cantidadDeCuotas = parseInt(prompt("Cuantas cuotas desea abonar?"))
-    while (isNaN(cantidadDeCuotas)){
-    cantidadDeCuotas = parseInt(prompt("Cuantas cuotas desea abonar? (favor de ingresar expresion numerica. Ej: 3..)"))}
-    let valorPorCategoria = parseInt(valorCategoria)
-    let valor = cantidadDeCuotas*valorPorCategoria
-            alert(`Socio: ${socio}
-            Concepto: ${cantidadDeCuotas} cuota/s
-            Mensual: $${valorPorCategoria}
-            Total: $${cantidadDeCuotas*valorPorCategoria}`)
-            console.log(`Abonara ${cantidadDeCuotas} cuota/s. Total: $${cantidadDeCuotas*valorPorCategoria}`)
-            return valor
+function ingresarNuevoSocio(tomaArray){
+    let nombreNuevoSocio = prompt("Ingrese nombre y apellido")
+    let edadSocio = prompt("Ingrese su edad")
+    while (isNaN(edadSocio)){
+        edadSocio = parseInt(prompt("Por favor ingrese su edad correctamente!"))
         }
+    let categoriaCorrecta = detectarCategoriaCorrecta(edadSocio)
+    let cuotaValor = cuotaPorCategoria(edadSocio)
+    let ultimoMesPago = 0 //deberia declarar la variable con un validador de fecha para abonar el mes a ingresar y que registre ese dato
+    let ultimoAnioPago = 2023 // idem ultimoMesPago pero con año
+    console.log("Iniciando gestion de nuevo socio...")
+    let mesPagoIngreso = prompt(`${nombreNuevoSocio}, gracias por acercarse al Club Atletico Independiente.
+    Usted esta por ser el ${categoriaCorrecta} N°: ${tomaArray.length+1}, y debe abonar, al menos,
+    la 1er cuota para terminar su registro.
+    El valor es de $${cuotaValor}. Cuantas cuotas desea abonar? (maximo 12 cuotas.)`)
+    let pagoIngresado = cuotaValor * mesPagoIngreso
+    console.log(`Ha realizado un pago de $${pagoIngresado}.`)
+    ultimoMesPago = ultimoMesPago + mesPagoIngreso
+    const nuevoSocio = new Socio(tomaArray.length+1, nombreNuevoSocio, categoriaCorrecta, cuotaValor, ultimoMesPago, ultimoAnioPago)
+    tomaArray.push(nuevoSocio)
+    console.log(`${nombreNuevoSocio} agradecemos su pago para confirmar, bienvenido a C.A.I. ya es el socio n° ${tomaArray.length}!`)
+ }
 
-//function noSocios ()
+function buscarSocio(tomaArray){
+    let socioBusqueda = prompt("Ingrese su nombre o apellido.")
+    let buscar = tomaArray.filter((socio) => socio.nombre.includes(socioBusqueda))
+    if(busqueda.length == 0){
+        console.log(`${socioBusqueda} no se encuentra en nuestro Padron, por favor ingrese los datos correctos.`)
+    }else{
+        consultarPadronSocios(buscar)
+    }
+}
 
+
+function navegador(){
+    let salirMenu = false
+    do{
+        salirMenu = navegadorIndice(salirMenu)
+    }while(!salirMenu)
+} 
+
+function navegadorIndice(salir){
+    let opcionIngresada = parseInt(prompt(
+`Bienvenido al Club Atletico Independiente, seccion Socios!
+Para poder ayudarlo, ingrese la opción deseada
+                1 - Asociarse: (UAT)
+                2 - Abonar Cuota: SOON
+                3 - Consultar informacion de socio: (UAT)
+                4 - Consultar padron de socios (FUNCION ADMIN) (UAT)
+                0 - Salir del menu`))
+    
+        switch(opcionIngresada){
+            case 1:
+                ingresarNuevoSocio(socios)  
+            break
+            case 2:
+                
+            break
+            case 3:
+                buscarSocio(socios)
+            break
+            case 4:
+                consultarPadronSocios(socios)
+            break
+            case 0:
+                console.log("Gracias por ser parte del club mas grande del mundo! C.A.I.")
+                salir = true
+                return salir
+            default:
+                console.log("Ingrese una opción correcta")
+            break
+        }
+}
+
+
+
+//código
+navegador()
