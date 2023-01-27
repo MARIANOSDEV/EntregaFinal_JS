@@ -86,10 +86,12 @@ function ingresarNuevoSocio(tomaArray){
 }
 
 function ingresarPago(tomaArray){
-    let numeroSocio = prompt("Ingrese su numero de socio")
-    while (buscarCategoriaSocios(socios, numeroSocio) == undefined){
-        numeroSocio = prompt("Ingrese su numero de socio correctamente")
-        }
+    let numeroSocio = prompt("Por favor ingrese su numero de socio")
+    while (buscarCategoriaSocios(socios, numeroSocio) == undefined && numeroSocio != null)
+    {numeroSocio = prompt(`     Ingrese su numero de socio correctamente
+    Si no conoce su numero de socio o desea hacer otra consulta,
+    cancele para volver al menu principal.`)}
+    if (numeroSocio != null){
     let nombreSocio = buscarCategoriaSocios(socios, numeroSocio).nombre
     let categoria = buscarCategoriaSocios(socios, numeroSocio).categoria
     let cantidadCuotas = prompt("Cuantas cuotas desea abonar?")
@@ -99,9 +101,9 @@ function ingresarPago(tomaArray){
     const nuevoPago = new pago(tomaArray.length+1, numeroSocio, categoria, cantidadCuotas, totalPago)
     console.log(`Usted a realizado el pago con exito, su abono se encuentra saldado hasta el mes ${actualizaMesPago}.`)
     tomaArray.push(nuevoPago)
-    console.log(tomaArray[tomaArray.length-1])
-    buscarCategoriaSocios(socios, numeroSocio).ultimoMesPago = actualizaMesPago         
-}
+    buscarCategoriaSocios(socios, numeroSocio).ultimoMesPago = actualizaMesPago
+    }
+    else{}}
 
 function buscarSocio(tomaArray){
     let socioBusqueda = prompt("Ingrese su nombre o apellido.")
@@ -118,9 +120,11 @@ function buscarCategoriaSocios(tomaArray, parametro){
     let socioEncontrado = tomaArray.find(
         (buscado) => buscado.id == socioBuscado
     )
-    if(socioEncontrado == undefined){
-        console.log(`${socioBuscado} no se encuentra en nuestro padron, por favor volver a consultar correctamente.`)
-    }else{
+    if(socioEncontrado == undefined)
+        {if(socioBuscado != null)
+        {console.log(`${socioBuscado} no se encuentra en nuestro padron, por favor volver a consultar correctamente.`)}
+        else{}}
+    else{
         return socioEncontrado
     }
 }
@@ -142,6 +146,7 @@ Para poder ayudarlo, ingrese la opción deseada
                 2 - Abonar Cuota: (UAT)
                 3 - Consultar informacion de socio: (UAT)
                 4 - Consultar padron de socios (FUNCION ADMIN) (UAT)
+                5 - Consultar ingresos del club (FUNCION ADMIN) (UAT)
                 0 - Salir del menu`))
     
         switch(opcionIngresada){
@@ -156,6 +161,9 @@ Para poder ayudarlo, ingrese la opción deseada
             break
             case 4:
                 consultarPadronSocios(socios)
+            break
+            case 5:
+                // consultarPagos(pagos)
             break
             case 0:
                 console.log("Gracias por ser parte del club mas grande del mundo! C.A.I.")
