@@ -85,8 +85,11 @@ function ingresarNuevoSocio(tomaArray){
     console.log(`${nombreNuevoSocio} agradecemos su pago para confirmar, bienvenido a C.A.I. ya es el socio n° ${tomaArray.length}!`)
 }
 
-function ingresarPago(tomaArray, actualizaArray){
+function ingresarPago(tomaArray){
     let numeroSocio = prompt("Ingrese su numero de socio")
+    while (buscarCategoriaSocios(socios, numeroSocio) == undefined){
+        numeroSocio = prompt("Ingrese su numero de socio correctamente")
+        }
     let nombreSocio = buscarCategoriaSocios(socios, numeroSocio).nombre
     let categoria = buscarCategoriaSocios(socios, numeroSocio).categoria
     let cantidadCuotas = prompt("Cuantas cuotas desea abonar?")
@@ -96,9 +99,8 @@ function ingresarPago(tomaArray, actualizaArray){
     const nuevoPago = new pago(tomaArray.length+1, numeroSocio, categoria, cantidadCuotas, totalPago)
     console.log(`Usted a realizado el pago con exito, su abono se encuentra saldado hasta el mes ${actualizaMesPago}.`)
     tomaArray.push(nuevoPago)
-    console.log(tomaArray)
-    buscarCategoriaSocios(socios, numeroSocio).ultimoMesPago = actualizaMesPago
-    console.log(actualizaArray)
+    console.log(tomaArray[tomaArray.length-1])
+    buscarCategoriaSocios(socios, numeroSocio).ultimoMesPago = actualizaMesPago         
 }
 
 function buscarSocio(tomaArray){
@@ -137,7 +139,7 @@ function navegadorIndice(salir){
 `Bienvenido al Club Atletico Independiente, seccion Socios!
 Para poder ayudarlo, ingrese la opción deseada
                 1 - Asociarse: (UAT)
-                2 - Abonar Cuota: SOON
+                2 - Abonar Cuota: (UAT)
                 3 - Consultar informacion de socio: (UAT)
                 4 - Consultar padron de socios (FUNCION ADMIN) (UAT)
                 0 - Salir del menu`))
@@ -147,7 +149,7 @@ Para poder ayudarlo, ingrese la opción deseada
                 ingresarNuevoSocio(socios)  
             break
             case 2:
-                ingresarPago(pagos, socios)
+                ingresarPago(pagos)
             break
             case 3:
                 buscarSocio(socios)
