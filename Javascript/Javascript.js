@@ -170,7 +170,7 @@ function navegador(){
 
 function Admin(func,array){
     if (pass != passAdmin){
-        pass = prompt("Ingrese la contraseña correcta.")
+        pass = prompt("Opciones exclusivas para admin, por favor ingrese la contraseña.")
         if (pass != passAdmin){
             console.log("La contraseña es incorrecta. Acceso denegado.")
             pass = ""
