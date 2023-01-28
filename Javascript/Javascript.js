@@ -1,3 +1,4 @@
+let passAdmin = "admin"
 class Socio {
     constructor(id, nombre, categoria, cuotaValor, ultimoAnioPago){
         this.id = id,
@@ -31,6 +32,15 @@ class pago {
 
 const pagos = []
 
+function Admin(func,array){
+    let pass = prompt("Ingrese clave admin")
+    if (pass === passAdmin )
+    {console.log("Bienvenido Admin!")
+    func(array)}
+    else{
+    console.log("La contraseña es incorrecta. Acceso denegado.")
+    }
+}
 
 function consultarPadronSocios(tomaArray){
     console.log("Padron de socios:")
@@ -40,7 +50,6 @@ function consultarPadronSocios(tomaArray){
 }
 function consultarPagos(tomaArray){
     if(tomaArray.length == 0){
-        console.log("Aun no se registraron pagos en el periodo actual.")
     }
     else{console.log("Registro de pagos:")
     for(let pago of tomaArray){
@@ -49,8 +58,10 @@ function consultarPagos(tomaArray){
 }
 function balanceIngresos(tomaArray){
     if(tomaArray.length == 0){
+        console.log("Aun no se registraron pagos en el periodo actual.")
     }
     else{
+        consultarPagos(tomaArray)
         let totalPagos = tomaArray.map(pago => pago.totalPago)
         let totalIngresos = totalPagos.reduce((acumulador, elemento) => acumulador + elemento, 0)
         let totalIva = totalIngresos - totalIngresos/1.21
@@ -58,7 +69,6 @@ function balanceIngresos(tomaArray){
     }
 
 }
-
 
 function detectarCategoriaCorrecta(rangoEdad){
     if (rangoEdad < 12 ){
@@ -120,7 +130,7 @@ function ingresarPago(tomaArray){
     let categoria = buscarCategoriaSocios(socios, numeroSocio).categoria
     let cantidadCuotas = parseInt(prompt("Cuantas cuotas desea abonar?"))
     while (isNaN(cantidadCuotas)){
-        cantidadCuotas = parseInt(prompt("Por favor ingrese cantidad de cuotas!"))
+        cantidadCuotas = parseInt(prompt("Por favor ingrese cantidad de cuotas correctamente."))
         }
     let totalPago = buscarCategoriaSocios(socios, numeroSocio).cuotaValor*cantidadCuotas
     alert(`Socio ${nombreSocio} N°${numeroSocio} abonara ${cantidadCuotas} cuota/s anuales por un total de $${totalPago}... por favor click en "aceptar" para abonar`)
@@ -170,11 +180,13 @@ function navegadorIndice(salir){
     let opcionIngresada = prompt(
 `Bienvenido al Club Atletico Independiente, seccion Socios!
 Para poder ayudarlo, ingrese la opción deseada
-                1 - Asociarse: (UAT)
-                2 - Abonar Cuota: (UAT)
-                3 - Consultar informacion de socio: (UAT)
-                4 - Consultar padron de socios (FUNCION ADMIN) (UAT)
-                5 - Consultar ingresos del club (FUNCION ADMIN) (UAT)
+                1 - Asociarse
+                2 - Abonar Cuota
+                3 - Consultar informacion de socio
+                Funciones exclusivas para admin:
+                -- (Password para UAT "admin")
+                4 - Consultar padron de socios
+                5 - Consultar ingresos del club
                 0 - Salir del menu`)*1
     
         switch(opcionIngresada){
@@ -188,11 +200,10 @@ Para poder ayudarlo, ingrese la opción deseada
                 buscarSocio(socios)
             break
             case 4:
-                consultarPadronSocios(socios)
+                Admin(consultarPadronSocios,socios)
             break
             case 5:
-                consultarPagos(pagos)
-                balanceIngresos(pagos)             
+                Admin(balanceIngresos,pagos)            
             break
             case 0:
                 console.log("Gracias por ser parte del club mas grande del mundo! C.A.I.")
