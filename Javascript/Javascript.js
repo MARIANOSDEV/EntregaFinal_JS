@@ -1,6 +1,21 @@
 let passAdmin = "admin"
 let pass = ""
 
+function Admin(func,array){
+    if (pass != passAdmin){
+        pass = prompt("Opciones exclusivas para admin, por favor ingrese la contraseña.")
+        if (pass != passAdmin){
+            console.log("La contraseña es incorrecta. Acceso denegado.")
+            pass = ""
+        }
+        else{console.log("Bienvenido Admin!")
+        func(array)
+        }}
+    else{
+        func(array)
+}
+}
+
 class Socio {
     constructor(id, nombre, categoria, cuotaValor, ultimoAnioPago){
         this.id = id,
@@ -40,6 +55,7 @@ function consultarPadronSocios(tomaArray){
         console.log(`Socio N°: ${asociado.id}// , ${asociado.nombre}, ${asociado.categoria}, Cuota: $${asociado.cuotaValor}, Ultimo abono: Año ${asociado.ultimoAnioPago}.`)
     }
 }
+
 function consultarPagos(tomaArray){
     if(tomaArray.length == 0){
     }
@@ -48,6 +64,7 @@ function consultarPagos(tomaArray){
         console.log(`Cupon: ${pago.cuponPago}// Socio N°: ${pago.id}, categoria "${pago.categoria}" abono ${pago.cantidadCuotas} cuotas por un total de $${pago.totalPago}, Ultimo abono: Año ${pago.actualizaAnioPago}.`)
     }}
 }
+
 function balanceIngresos(tomaArray){
     if(tomaArray.length == 0){
         console.log("Aun no se registraron pagos en el periodo actual.")
@@ -57,7 +74,7 @@ function balanceIngresos(tomaArray){
         let totalPagos = tomaArray.map(pago => pago.totalPago)
         let totalIngresos = totalPagos.reduce((acumulador, elemento) => acumulador + elemento, 0)
         let totalIva = totalIngresos - totalIngresos/1.21
-        console.log(`Registramos un total de ingresos por $${totalIngresos}, con un iva a liquidar de $${totalIva.toFixed(2)}`)
+        console.log(`Registramos un total de ingresos por pago de abonos de socios vigentes de $${totalIngresos}, con un iva a liquidar de $${totalIva.toFixed(2)}`)
     }
 
 }
@@ -159,28 +176,11 @@ function buscarCategoriaSocios(tomaArray, parametro){
     }
 }
 
-
-
 function navegador(){
     let salirMenu = false
     do{
         salirMenu = navegadorIndice(salirMenu)
     }while(!salirMenu)
-}
-
-function Admin(func,array){
-    if (pass != passAdmin){
-        pass = prompt("Opciones exclusivas para admin, por favor ingrese la contraseña.")
-        if (pass != passAdmin){
-            console.log("La contraseña es incorrecta. Acceso denegado.")
-            pass = ""
-        }
-        else{console.log("Bienvenido Admin!")
-        func(array)
-        }}
-    else{
-        func(array)
-}
 }
 
 function navegadorIndice(salir){
@@ -193,7 +193,7 @@ Para poder ayudarlo, ingrese la opción deseada
                 Funciones exclusivas para admin:
                 -- (Password para UAT "admin")
                 4 - Consultar padron de socios
-                5 - Consultar ingresos del club
+                5 - Consultar ingresos del club por pago de socios vigentes
                 0 - Salir del menu`)*1
     
         switch(opcionIngresada){
