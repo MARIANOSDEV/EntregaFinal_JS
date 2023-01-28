@@ -1,4 +1,6 @@
 let passAdmin = "admin"
+let pass = ""
+
 class Socio {
     constructor(id, nombre, categoria, cuotaValor, ultimoAnioPago){
         this.id = id,
@@ -32,16 +34,6 @@ class pago {
 
 const pagos = []
 
-function Admin(func,array){
-    let pass = prompt("Ingrese clave admin")
-    if (pass === passAdmin )
-    {console.log("Bienvenido Admin!")
-    func(array)}
-    else{
-    console.log("La contraseña es incorrecta. Acceso denegado.")
-    }
-}
-
 function consultarPadronSocios(tomaArray){
     console.log("Padron de socios:")
     for(let asociado of tomaArray){
@@ -53,7 +45,7 @@ function consultarPagos(tomaArray){
     }
     else{console.log("Registro de pagos:")
     for(let pago of tomaArray){
-        console.log(`Cupon: ${pago.cuponPago}// Socio N°: ${pago.id}, categoria "${pago.categoria}" abono ${pago.cantidadCuotas} cuotas, Ultimo abono: Año ${pago.actualizaAnioPago}.`)
+        console.log(`Cupon: ${pago.cuponPago}// Socio N°: ${pago.id}, categoria "${pago.categoria}" abono ${pago.cantidadCuotas} cuotas por un total de $${pago.totalPago}, Ultimo abono: Año ${pago.actualizaAnioPago}.`)
     }}
 }
 function balanceIngresos(tomaArray){
@@ -174,7 +166,22 @@ function navegador(){
     do{
         salirMenu = navegadorIndice(salirMenu)
     }while(!salirMenu)
-} 
+}
+
+function Admin(func,array){
+    if (pass != passAdmin){
+        pass = prompt("Ingrese la contraseña correcta.")
+        if (pass != passAdmin){
+            console.log("La contraseña es incorrecta. Acceso denegado.")
+            pass = ""
+        }
+        else{console.log("Bienvenido Admin!")
+        func(array)
+        }}
+    else{
+        func(array)
+}
+}
 
 function navegadorIndice(salir){
     let opcionIngresada = prompt(
