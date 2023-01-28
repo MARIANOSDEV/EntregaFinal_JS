@@ -139,7 +139,7 @@ function navegador(){
 } 
 
 function navegadorIndice(salir){
-    let opcionIngresada = parseInt(prompt(
+    let opcionIngresada = prompt(
 `Bienvenido al Club Atletico Independiente, seccion Socios!
 Para poder ayudarlo, ingrese la opción deseada
                 1 - Asociarse: (UAT)
@@ -147,7 +147,7 @@ Para poder ayudarlo, ingrese la opción deseada
                 3 - Consultar informacion de socio: (UAT)
                 4 - Consultar padron de socios (FUNCION ADMIN) (UAT)
                 5 - Consultar ingresos del club (FUNCION ADMIN) (UAT)
-                0 - Salir del menu`))
+                0 - Salir del menu`)*1
     
         switch(opcionIngresada){
             case 1:
