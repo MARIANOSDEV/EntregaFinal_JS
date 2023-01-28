@@ -1,42 +1,64 @@
 class Socio {
-    constructor(id, nombre, categoria, cuotaValor, ultimoMesPago, ultimoAnioPago){
+    constructor(id, nombre, categoria, cuotaValor, ultimoAnioPago){
         this.id = id,
         this.nombre = nombre,
         this.categoria = categoria,
         this.cuotaValor = cuotaValor
-        this.ultimoMesPago = ultimoMesPago
         this.ultimoAnioPago = ultimoAnioPago
     }
 }
-
-const socio1 = new Socio(1,"Mariano Sanchez","Socio Activo", 3000, 1, 2023)
-const socio2 = new Socio(2,"Magali Sanchez","Socio Infantil", 2000, 1, 2023)
-const socio3 = new Socio(3,"Marcela Roberto","Socio Activo", 3000, 12, 2022)
-const socio4 = new Socio(4,"Florencia Sanchez","Socio Activo", 3000, 1, 2023)
-const socio5 = new Socio(5,"Luciano Rondo","Socio Cadete", 2500, 12, 2022)
+//Padron de socios actual.
+const socio1 = new Socio(1,"Mariano Sanchez","Socio Activo", 3000, 2023)
+const socio2 = new Socio(2,"Magali Sanchez","Socio Infantil", 2000, 2023)
+const socio3 = new Socio(3,"Marcela Roberto","Socio Activo", 3000, 2022)
+const socio4 = new Socio(4,"Florencia Sanchez","Socio Activo", 3000, 2023)
+const socio5 = new Socio(5,"Luciano Rondo","Socio Cadete", 2500, 2022)
 
 const socios = []
 
 socios.push(socio1, socio2, socio3, socio4, socio5)
 
 class pago {
-    constructor(cuponPago, id, categoria, cantidadCuotas, totalPago){
+    constructor(cuponPago, id, categoria, cantidadCuotas, totalPago, actualizaAnioPago){
         this.cuponPago = cuponPago,
         this.id = id,
         this.categoria = categoria,
         this.cantidadCuotas = cantidadCuotas
         this.totalPago = totalPago
+        this.actualizaAnioPago = actualizaAnioPago
     }
 }
 
 const pagos = []
 
+
 function consultarPadronSocios(tomaArray){
     console.log("Padron de socios:")
     for(let asociado of tomaArray){
-        console.log(`Socio N°: ${asociado.id}// , ${asociado.nombre}, ${asociado.categoria}, Cuota: $${asociado.cuotaValor}, Ultimo abono: Mes ${asociado.ultimoMesPago} del año ${asociado.ultimoAnioPago}.`)
+        console.log(`Socio N°: ${asociado.id}// , ${asociado.nombre}, ${asociado.categoria}, Cuota: $${asociado.cuotaValor}, Ultimo abono: Año ${asociado.ultimoAnioPago}.`)
     }
 }
+function consultarPagos(tomaArray){
+    if(tomaArray.length == 0){
+        console.log("Aun no se registraron pagos en el periodo actual.")
+    }
+    else{console.log("Registro de pagos:")
+    for(let pago of tomaArray){
+        console.log(`Cupon: ${pago.cuponPago}// Socio N°: ${pago.id}, categoria "${pago.categoria}" abono ${pago.cantidadCuotas} cuotas, Ultimo abono: Año ${pago.actualizaAnioPago}.`)
+    }}
+}
+function balanceIngresos(tomaArray){
+    if(tomaArray.length == 0){
+    }
+    else{
+        let totalPagos = tomaArray.map(pago => pago.totalPago)
+        let totalIngresos = totalPagos.reduce((acumulador, elemento) => acumulador + elemento, 0)
+        let totalIva = totalIngresos - totalIngresos/1.21
+        console.log(`Registramos un total de ingresos por $${totalIngresos}, con un iva a liquidar de $${totalIva.toFixed(2)}`)
+    }
+
+}
+
 
 function detectarCategoriaCorrecta(rangoEdad){
     if (rangoEdad < 12 ){
@@ -70,17 +92,19 @@ function ingresarNuevoSocio(tomaArray){
         }
     let categoriaCorrecta = detectarCategoriaCorrecta(edadSocio)
     let cuotaValor = cuotaPorCategoria(edadSocio)
-    let ultimoMesPago = 0 //deberia declarar la variable con un validador de fecha para abonar el mes a ingresar y que registre ese dato
-    let ultimoAnioPago = 2023 // idem ultimoMesPago pero con año
+    let ultimoAnioPago = 2022 // idem ultimoMesPago pero con año
     console.log("Iniciando gestion de nuevo socio...")
-    let mesPagoIngreso = prompt(`${nombreNuevoSocio}, gracias por acercarse al Club Atletico Independiente.
+    let cantidadAbonos = parseInt(prompt(`${nombreNuevoSocio}, gracias por acercarse al Club Atletico Independiente.
     Usted esta por ser el ${categoriaCorrecta} N°: ${tomaArray.length+1}, y debe abonar, al menos,
-    la 1er cuota para terminar su registro.
-    El valor es de $${cuotaValor}. Cuantas cuotas desea abonar? (maximo 12 cuotas.)`)
-    let pagoIngresado = cuotaValor * mesPagoIngreso
+    el primer año para terminar su registro.
+    El valor es de $${cuotaValor}. Indique cuantos abonos desea adquirir.`))
+    while (isNaN(cantidadAbonos)){
+        cantidadAbonos = parseInt(prompt("Por favor ingrese cantidad correctamente"))
+        }
+    let pagoIngresado = cuotaValor * cantidadAbonos
     console.log(`Ha realizado un pago de $${pagoIngresado}.`)
-    ultimoMesPago = ultimoMesPago + mesPagoIngreso
-    const nuevoSocio = new Socio(tomaArray.length+1, nombreNuevoSocio, categoriaCorrecta, cuotaValor, ultimoMesPago, ultimoAnioPago)
+    ultimoAnioPago = ultimoAnioPago + cantidadAbonos
+    const nuevoSocio = new Socio(tomaArray.length+1, nombreNuevoSocio, categoriaCorrecta, cuotaValor, ultimoAnioPago)
     tomaArray.push(nuevoSocio)
     console.log(`${nombreNuevoSocio} agradecemos su pago para confirmar, bienvenido a C.A.I. ya es el socio n° ${tomaArray.length}!`)
 }
@@ -94,20 +118,24 @@ function ingresarPago(tomaArray){
     if (numeroSocio != null){
     let nombreSocio = buscarCategoriaSocios(socios, numeroSocio).nombre
     let categoria = buscarCategoriaSocios(socios, numeroSocio).categoria
-    let cantidadCuotas = prompt("Cuantas cuotas desea abonar?")
+    let cantidadCuotas = parseInt(prompt("Cuantas cuotas desea abonar?"))
+    while (isNaN(cantidadCuotas)){
+        cantidadCuotas = parseInt(prompt("Por favor ingrese cantidad de cuotas!"))
+        }
     let totalPago = buscarCategoriaSocios(socios, numeroSocio).cuotaValor*cantidadCuotas
-    alert(`Socio ${nombreSocio} N°${numeroSocio} abonara ${cantidadCuotas} cuota/s por un total de $${totalPago}... por favor click en "aceptar" para abonar`)
-    let actualizaMesPago = parseInt(buscarCategoriaSocios(socios, numeroSocio).ultimoMesPago)+parseInt(cantidadCuotas)
-    const nuevoPago = new pago(tomaArray.length+1, numeroSocio, categoria, cantidadCuotas, totalPago)
-    console.log(`Usted a realizado el pago con exito, su abono se encuentra saldado hasta el mes ${actualizaMesPago}.`)
+    alert(`Socio ${nombreSocio} N°${numeroSocio} abonara ${cantidadCuotas} cuota/s anuales por un total de $${totalPago}... por favor click en "aceptar" para abonar`)
+    let actualizaAnioPago = parseInt(buscarCategoriaSocios(socios, numeroSocio).ultimoAnioPago)+parseInt(cantidadCuotas)
+    const nuevoPago = new pago(tomaArray.length+1, numeroSocio, categoria, cantidadCuotas, totalPago, actualizaAnioPago)
+    console.log(`Usted a realizado el pago con exito, su abono se encuentra saldado hasta el mes ${actualizaAnioPago}.`)
     tomaArray.push(nuevoPago)
-    buscarCategoriaSocios(socios, numeroSocio).ultimoMesPago = actualizaMesPago
+    buscarCategoriaSocios(socios, numeroSocio).ultimoAnioPago = actualizaAnioPago
     }
     else{}}
 
 function buscarSocio(tomaArray){
     let socioBusqueda = prompt("Ingrese su nombre o apellido.")
-    let buscar = tomaArray.filter((socio) => socio.nombre.includes(socioBusqueda))
+    let buscar = tomaArray.filter(
+        (socio) => socio.nombre.toLowerCase().includes(socioBusqueda))
     if(buscar.length == 0){
         console.log(`${socioBusqueda} no se encuentra en nuestro Padron, por favor ingrese los datos correctos.`)
     }else{
@@ -163,7 +191,8 @@ Para poder ayudarlo, ingrese la opción deseada
                 consultarPadronSocios(socios)
             break
             case 5:
-                // consultarPagos(pagos)
+                consultarPagos(pagos)
+                balanceIngresos(pagos)             
             break
             case 0:
                 console.log("Gracias por ser parte del club mas grande del mundo! C.A.I.")
@@ -175,7 +204,4 @@ Para poder ayudarlo, ingrese la opción deseada
         }
 }
 
-
-
-//código
 navegador()
