@@ -290,14 +290,28 @@ header {
 }
 
 .container {
-  margin: 40px !important;
+  margin: 60px !important;
+  color: red !important;
 }
 
 #buscadorSocios {
   background-color: white !important;
 }
-#barraBuscadorSocios{
-  margin: 20px !important;
+
+#barraBuscadorSocios {
+  padding: 20px !important;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
 }
 
 footer {

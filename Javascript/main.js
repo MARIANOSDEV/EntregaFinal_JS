@@ -38,19 +38,34 @@ const pagos = []
 
 //funciones
 let botonAsociarse = document.getElementById("botonAsociarse")
+let inputSocioAlta = document.getElementById("nombreYapellido")
+let inputEdadAlta = document.getElementById("edad")
+let inputAbonosAlta = document.getElementById("abonos")
+let sociosDiv = document.getElementById("sociosDiv")
+let botonPadron = document.getElementById("botonesPadron")
+let searchSocio = document.getElementById("buscarSocio")
+let searchSocioNumero = document.getElementById("buscarSocioNumero")
 
 function ingresarNuevoSocio(tomaArray){
-    let nombreNuevoSocio = document.getElementById("nombreYapellido").value
-    let edadSocio = document.getElementById("edad").value
-    let cantidadAbonos = parseInt(document.getElementById("abonos").value)
+    let nombreNuevoSocio = inputSocioAlta.value
+    let edadSocio = parseInt(inputEdadAlta.value)
+    let cantidadAbonos = parseInt(inputAbonosAlta.value)
     ultimoAnioPago = 2022 + cantidadAbonos
     const nuevoSocio = new Socio(tomaArray.length+1, nombreNuevoSocio, detectarCategoriaCorrecta(edadSocio), cuotaPorCategoria(edadSocio), ultimoAnioPago)
     tomaArray.push(nuevoSocio)
     alert(`Usted ha completa el registro correctamente!
     Bienvenido socio N°${tomaArray.length}, ${nombreNuevoSocio}.`)
-    nombreNuevoSocio.value =""
-    edadSocio.value =""
-    cantidadAbonos.value =""
+    inputSocioAlta.value = ""
+    inputEdadAlta.value = ""
+    inputAbonosAlta.value = ""
+}
+function checkIngreso(func, array){
+    if(inputSocioAlta.value != "" && inputEdadAlta.value != "" && inputAbonosAlta.value != "")
+    {
+        func(array)
+    }
+    else{
+        alert("Por favor complete todos los campos correctamente!")}
 }
 
 function ingresarPago(tomaArray){
@@ -69,6 +84,7 @@ function ingresarPago(tomaArray){
 }}
 
 function consultarPadronSocios(tomaArray){
+    sociosDiv.innerHTML = ""
     for(let asociado of tomaArray){
         let verSocio = document.createElement("tr")
         verSocio.innerHTML =`
@@ -76,8 +92,9 @@ function consultarPadronSocios(tomaArray){
         <th scope="row">${asociado.id}</th>
         <td>${asociado.nombre}</td>
         <td>${asociado.categoria}</td>
-        <td>${asociado.ultimoAnioPago}</td>`
-
+        <td>${asociado.ultimoAnioPago}</td>
+        <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault${asociado.id}"></td>
+        `
         sociosDiv.append(verSocio)
     }
 }
@@ -138,11 +155,10 @@ function buscarSocioPorNumero(parametro){
     let socioBusqueda = parseInt(parametro)
     let buscar = socios.filter(
         (socio) => socio.id == socioBusqueda )
-    if(buscar.length == 0){
-        noEncontrado()
+    if(parametro ==""){
     }
-    else if(buscar.length === socios.length)
-        {}
+    else if(buscar.length === 0)
+        {noEncontrado()}
         else{
         consultarPadronSocios(buscar)
         }
@@ -151,22 +167,16 @@ function buscarSocioPorNombre(parametro){
     let socioBusqueda = parametro.toLowerCase()
     let buscar = socios.filter(
         (socio) => socio.nombre.toLowerCase().includes(socioBusqueda))
-    if(buscar.length == 0){
-        noEncontrado()
+    if(buscar.length === socios.length){ 
     }
-    else if(buscar.length === socios.length)
-        {}
+    else if(buscar.length == 0)
+        {noEncontrado()}
         else{
         consultarPadronSocios(buscar)
         }
 }
 
 //DOM
-
-let sociosDiv = document.getElementById("sociosDiv")
-let botonPadron = document.getElementById("botonesPadron")
-let searchSocio = document.getElementById("buscarSocio")
-let searchSocioNumero = document.getElementById("buscarSocioNumero")
 
 
 botonPadron.onclick = () => {
@@ -177,17 +187,9 @@ searchSocio.oninput = () => {
 }
 searchSocioNumero.oninput = () => {
     buscarSocioPorNumero(searchSocioNumero.value)
+    console.log(searchSocioNumero.value)
 }
 
 botonAsociarse.onclick = () => {
-    ingresarNuevoSocio(socios)
+    checkIngreso(ingresarNuevoSocio,socios)
 }
-
-
-// navegador()
-
-// let listaPrueba = document.getElementById("opcionesSocios")
-// listaPrueba.innerHTML += `<li class="acaVaLji">Escribo<li/>`
-
-// function abrirNavegador()
-// {navegador()}
