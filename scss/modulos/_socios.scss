@@ -9,6 +9,24 @@
     margin-right: 10px;
     }
 }
+#opcionesSociosSi
+{
+    display: none;
+}
+#opcionesSociosNo
+{
+    
+}
+
+.classSociosSiNo #opcionesSociosSi
+{
+    display: grid;
+}
+.classSociosSiNo #opcionesSociosNo
+{
+    display: none;
+}
+
 .formularios{
     display: flex;
     flex-direction: column;
@@ -34,8 +52,6 @@
     padding: 20px !important;
 }
 input[type=number] { -moz-appearance:textfield; }
-
-
 th{
     text-align: center;
 }

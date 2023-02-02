@@ -275,6 +275,18 @@ header {
   margin-right: 10px;
 }
 
+#opcionesSociosSi {
+  display: none;
+}
+
+.classSociosSiNo #opcionesSociosSi {
+  display: grid;
+}
+
+.classSociosSiNo #opcionesSociosNo {
+  display: none;
+}
+
 .formularios {
   display: flex;
   flex-direction: column;

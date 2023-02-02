@@ -1,26 +1,25 @@
 let btnToggle = document.getElementById("toggleMode")
+let sociosSiNoBoton = document.getElementById("sociosSiNo")
 
 //existe lo captura, sino lo setea
-if(localStorage.getItem("modoOscuro")){
-    if(JSON.parse(localStorage.getItem("modoOscuro")) == true){
-        btnToggle.innerText = `Si`
-        btnToggle.className = `btn btn-light`
-    }
-}else{
-    localStorage.setItem("modoOscuro", false)
+if(localStorage.getItem("socio")){
+    if(JSON.parse(localStorage.getItem("socio")) == true){
+        btnToggle.innerText = `No`
+        btnToggle.className = `btn btn-danger`
+        sociosSiNoBoton.classList.add(`classSociosSiNo`)    
+    }}{
+               
 }
 
 btnToggle.addEventListener("click", ()=>{
-    //toggle agrega y quita clase
-    document.body.classList.toggle("darkMode")
-
-    if(JSON.parse(localStorage.getItem("modoOscuro")) == false){
-        btnToggle.innerText = `Si`
-        btnToggle.className = `btn btn-light`
-        localStorage.setItem("modoOscuro", true)
-    }else{
-        btnToggle.innerText = `No`
-        btnToggle.className = `btn btn-danger`
-        localStorage.setItem("modoOscuro", false)
-    }
-})
+sociosSiNoBoton.classList.toggle(`classSociosSiNo`)
+if(JSON.parse(localStorage.getItem("socio")) == true){
+            btnToggle.innerText = `Si`
+            btnToggle.className = `btn btn-outline-danger`
+            localStorage.setItem("socio", false)
+        }else{
+            btnToggle.innerText = `No`
+            btnToggle.className = `btn btn-danger`
+            localStorage.setItem("socio", true)
+        }
+    })

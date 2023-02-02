@@ -30,10 +30,15 @@ class pago {
         this.actualizaAnioPago = actualizaAnioPago
     }
 }
+//const nuevoPago = new pago(
 
 const pagos = []
 
-//variables
+//storage
+
+localStorage.setItem("padron", socios)
+let padron = localStorage.getItem("padron")
+console.log(padron)
 
 
 //funciones
@@ -45,6 +50,7 @@ let sociosDiv = document.getElementById("sociosDiv")
 let botonPadron = document.getElementById("botonesPadron")
 let searchSocio = document.getElementById("buscarSocio")
 let searchSocioNumero = document.getElementById("buscarSocioNumero")
+
 
 function ingresarNuevoSocio(tomaArray){
     let nombreNuevoSocio = inputSocioAlta.value
@@ -67,21 +73,6 @@ function checkIngreso(func, array){
     else{
         alert("Por favor complete todos los campos correctamente!")}
 }
-
-function ingresarPago(tomaArray){
-    let numeroSocio = buscarNumeroSocio ()
-    if (numeroSocio == null){}
-    else{
-    let cantidadCuotas = parseInt(prompt("Cuantas cuotas desea abonar?"))
-    while (isNaN(cantidadCuotas)){
-        cantidadCuotas = parseInt(prompt("Por favor ingrese cantidad de cuotas correctamente."))
-        }
-    let totalPago = buscarCategoriaSocios(socios, numeroSocio).cuotaValor*cantidadCuotas
-    let actualizaAnioPago = parseInt(buscarCategoriaSocios(socios, numeroSocio).ultimoAnioPago)+parseInt(cantidadCuotas)
-    const nuevoPago = new pago(tomaArray.length+1, numeroSocio, buscarCategoriaSocios(socios, numeroSocio).categoria, cantidadCuotas, totalPago, actualizaAnioPago)
-    tomaArray.push(nuevoPago)
-    buscarCategoriaSocios(socios, numeroSocio).ultimoAnioPago = actualizaAnioPago
-}}
 
 function consultarPadronSocios(tomaArray){
     sociosDiv.innerHTML = ""
@@ -189,7 +180,6 @@ searchSocioNumero.oninput = () => {
     buscarSocioPorNumero(searchSocioNumero.value)
     console.log(searchSocioNumero.value)
 }
-
 botonAsociarse.onclick = () => {
     checkIngreso(ingresarNuevoSocio,socios)
 }
