@@ -55,7 +55,6 @@ function consultarPadronSocios(tomaArray){
         console.log(`Socio N°: ${asociado.id}// , ${asociado.nombre}, ${asociado.categoria}, Cuota: $${asociado.cuotaValor}, Ultimo abono: Año ${asociado.ultimoAnioPago}.`)
     }
 }
-
 function consultarPagos(tomaArray){
     if(tomaArray.length == 0){
     }
@@ -64,21 +63,21 @@ function consultarPagos(tomaArray){
         console.log(`Cupon: ${pago.cuponPago}// Socio N°: ${pago.id}, categoria "${pago.categoria}" abono ${pago.cantidadCuotas} cuotas por un total de $${pago.totalPago}, Ultimo abono: Año ${pago.actualizaAnioPago}.`)
     }}
 }
-
+function consultarPagos(tomaArray){
+        let totalPagos = tomaArray.map(pago => pago.totalPago)
+        let totalIngresos = totalPagos.reduce((acumulador, elemento) => acumulador + elemento, 0)
+        let totalIva = totalIngresos - totalIngresos/1.21
+        console.log(`Registramos un total de ingresos por pago de abonos de socios vigentes de $${totalIngresos}, con un iva a liquidar de $${totalIva.toFixed(2)}`)
+}
 function balanceIngresos(tomaArray){
     if(tomaArray.length == 0){
         console.log("Aun no se registraron pagos en el periodo actual.")
     }
     else{
         consultarPagos(tomaArray)
-        let totalPagos = tomaArray.map(pago => pago.totalPago)
-        let totalIngresos = totalPagos.reduce((acumulador, elemento) => acumulador + elemento, 0)
-        let totalIva = totalIngresos - totalIngresos/1.21
-        console.log(`Registramos un total de ingresos por pago de abonos de socios vigentes de $${totalIngresos}, con un iva a liquidar de $${totalIva.toFixed(2)}`)
     }
 
 }
-
 function detectarCategoriaCorrecta(rangoEdad){
     if (rangoEdad < 12 ){
         return "Socio Infantil"
@@ -90,7 +89,6 @@ function detectarCategoriaCorrecta(rangoEdad){
         return "Socio Activo"
         }
 }
-
 function cuotaPorCategoria(rangoEdad){
     if (rangoEdad < 12 ){
         return 2000
@@ -102,56 +100,42 @@ function cuotaPorCategoria(rangoEdad){
         return 3000
 }
 }
-
 function ingresarNuevoSocio(tomaArray){
     let nombreNuevoSocio = prompt("Ingrese nombre y apellido")
     let edadSocio = prompt("Ingrese su edad")
     while (isNaN(edadSocio)){
-        edadSocio = parseInt(prompt("Por favor ingrese su edad correctamente!"))
+        edadSocio = parseInt(prompt("Ingresar correctamente."))
         }
-    let categoriaCorrecta = detectarCategoriaCorrecta(edadSocio)
-    let cuotaValor = cuotaPorCategoria(edadSocio)
-    let ultimoAnioPago = 2022 // idem ultimoMesPago pero con año
-    console.log("Iniciando gestion de nuevo socio...")
-    let cantidadAbonos = parseInt(prompt(`${nombreNuevoSocio}, gracias por acercarse al Club Atletico Independiente.
-    Usted esta por ser el ${categoriaCorrecta} N°: ${tomaArray.length+1}, y debe abonar, al menos,
-    el primer año para terminar su registro.
-    El valor es de $${cuotaValor}. Indique cuantos abonos desea adquirir.`))
+    let cantidadAbonos = parseInt(prompt(`Cantidad de abonos.`))
     while (isNaN(cantidadAbonos)){
-        cantidadAbonos = parseInt(prompt("Por favor ingrese cantidad correctamente"))
+        cantidadAbonos = parseInt(prompt("Ingresar correctamente."))
         }
-    let pagoIngresado = cuotaValor * cantidadAbonos
-    console.log(`Ha realizado un pago de $${pagoIngresado}.`)
-    ultimoAnioPago = ultimoAnioPago + cantidadAbonos
-    const nuevoSocio = new Socio(tomaArray.length+1, nombreNuevoSocio, categoriaCorrecta, cuotaValor, ultimoAnioPago)
+    ultimoAnioPago = 2022 + cantidadAbonos
+    const nuevoSocio = new Socio(tomaArray.length+1, nombreNuevoSocio, detectarCategoriaCorrecta(edadSocio), cuotaPorCategoria(edadSocio), ultimoAnioPago)
     tomaArray.push(nuevoSocio)
-    console.log(`${nombreNuevoSocio} agradecemos su pago para confirmar, bienvenido a C.A.I. ya es el socio n° ${tomaArray.length}!`)
 }
-
-function ingresarPago(tomaArray){
+function buscarNumeroSocio (){
     let numeroSocio = prompt("Por favor ingrese su numero de socio")
     while (buscarCategoriaSocios(socios, numeroSocio) == undefined && numeroSocio != null)
-    {numeroSocio = prompt(`     Ingrese su numero de socio correctamente
-    Si no conoce su numero de socio o desea hacer otra consulta,
-    cancele para volver al menu principal.`)}
-    if (numeroSocio != null){
-    let nombreSocio = buscarCategoriaSocios(socios, numeroSocio).nombre
-    let categoria = buscarCategoriaSocios(socios, numeroSocio).categoria
+    {numeroSocio = prompt(`Ingrese su numero de socio correctamente`)}
+return numeroSocio}
+
+function ingresarPago(tomaArray){
+    let numeroSocio = buscarNumeroSocio ()
+    if (numeroSocio == null){}
+    else{
     let cantidadCuotas = parseInt(prompt("Cuantas cuotas desea abonar?"))
     while (isNaN(cantidadCuotas)){
         cantidadCuotas = parseInt(prompt("Por favor ingrese cantidad de cuotas correctamente."))
         }
     let totalPago = buscarCategoriaSocios(socios, numeroSocio).cuotaValor*cantidadCuotas
-    alert(`Socio ${nombreSocio} N°${numeroSocio} abonara ${cantidadCuotas} cuota/s anuales por un total de $${totalPago}... por favor click en "aceptar" para abonar`)
     let actualizaAnioPago = parseInt(buscarCategoriaSocios(socios, numeroSocio).ultimoAnioPago)+parseInt(cantidadCuotas)
-    const nuevoPago = new pago(tomaArray.length+1, numeroSocio, categoria, cantidadCuotas, totalPago, actualizaAnioPago)
-    console.log(`Usted a realizado el pago con exito, su abono se encuentra saldado hasta el mes ${actualizaAnioPago}.`)
+    const nuevoPago = new pago(tomaArray.length+1, numeroSocio, buscarCategoriaSocios(socios, numeroSocio).categoria, cantidadCuotas, totalPago, actualizaAnioPago)
     tomaArray.push(nuevoPago)
     buscarCategoriaSocios(socios, numeroSocio).ultimoAnioPago = actualizaAnioPago
-    }
-    else{}}
+}}
 
-function buscarSocio(tomaArray){
+function buscarSocioPorNombre(tomaArray){
     let socioBusqueda = prompt("Ingrese su nombre o apellido.")
     let buscar = tomaArray.filter(
         (socio) => socio.nombre.toLowerCase().includes(socioBusqueda))
@@ -204,7 +188,7 @@ Para poder ayudarlo, ingrese la opción deseada
                 ingresarPago(pagos)
             break
             case 3:
-                buscarSocio(socios)
+                buscarSocioPorNombre(socios)
             break
             case 4:
                 Admin(consultarPadronSocios,socios)

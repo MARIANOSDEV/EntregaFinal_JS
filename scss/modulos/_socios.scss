@@ -1,0 +1,33 @@
+#opcionesSocios
+{
+    display: flex;
+    margin: 25px;
+    flex-direction: row;
+    justify-content: center;
+    #consultaSocios
+    {
+    margin-right: 10px;
+    }
+}
+.formularios{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;       
+    .mainform--content
+    {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 40%; 
+    }
+}
+.container{
+    margin: 40px !important;
+}
+#buscadorSocios
+{
+    background-color: white !important;
+}
+

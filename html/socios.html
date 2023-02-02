@@ -48,14 +48,74 @@
         </div>
     </nav>
     
-    <main>
+<main>
+        <div id="opcionesSocios">
+            <div id="consultaSocios">
+                <h3>Es usted socio?</h3>
+            </div>
+            <div id="botonSocios">   
+                <button id="toggleMode" class="btn btn-danger">No</button>
+            </div>
+        </div>
 
-    </main>
+        <div class="formularios" id="opcionesSociosNo">
+                <div class="mainform--content">
+                <label for="socio">NOMBRE Y APELLIDO:</label>
+                <input type="text" placeholder="Ingrese su nombre y apellido" id="contacto">
+                </div>
+                <div class="mainform--content">
+                <label for="edad">Edad:</label>
+                <input type="number" placeholder="Ingrese su Edad" id="edad">
+                </div>
+                <div class="mainform--content">
+                <label for="abonos">Cantidad de abonos:</label>
+                <input type="number" placeholder="Ingrese su Edad" id="abonos">
+                </div>                
+                <div class="mainform--content">
+                <input type="submit" value="Asociarme ahora!"> 
+                </div>
+        </div>
+
+        <div class="formularios" id="opcionesSociosSi">
+                <h4>Buscar informacion de asociado:</h4>
+                <div class="mainform--content">
+                <label for="socio">NOMBRE O APELLIDO:</label>
+                <input type="text" placeholder="Ingrese su nombre y apellido" id="contacto">
+                </div>
+                <div class="mainform--content">
+                <label for="edad">Numero de socio:</label>
+                <input type="number" placeholder="Ingrese su Edad" id="edad">
+                </div>
+                <div class="mainform--content">
+                <input type="submit" value="Consultar"> 
+                </div>
+        </div>
+        <div class="container">
+            <nav class="navbar navbar-light bg-light" id="buscadorSocios">
+                <div class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="botones">Buscar</button>
+                </div>
+              </nav>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Socio N°</th>
+                    <th scope="col">Nombre y apellido</th>
+                    <th scope="col">Categoria de socio</th>
+                    <th scope="col">Abono hasta</th>
+                  </tr>
+                </thead>
+                <tbody id="sociosDiv">
+                </tbody>
+              </table>
+        </div>
+</main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-   
-    <script src="../Javascript/Javascript.js"></script>
-    
+
+    <script src="../Javascript/main.js"></script>
+    <script src="../Javascript/BotonSocio.js"></script>
     <footer>
         <div class="myfoot">
         <span class="copyright">

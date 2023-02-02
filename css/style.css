@@ -265,42 +265,36 @@ header {
   transition: width 2s, height 2s, transform 2s, opacity 3s;
 }
 
-#galeriadelrojo {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  height: 20px;
-  font-size: 40px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  display: inline-block;
-  text-align: left;
-  color: RED;
+#opcionesSocios {
+  display: flex;
+  margin: 25px;
+  flex-direction: row;
+  justify-content: center;
+}
+#opcionesSocios #consultaSocios {
+  margin-right: 10px;
 }
 
-@media screen and (max-width: 576px) {
-  #galeriadelrojo {
-    font-size: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
+.formularios {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
 }
-#divcon {
-  max-width: 90%;
-  height: AUTO;
-  margin-bottom: 50px;
-}
-
-#estadio {
-  margin: 20px;
+.formularios .mainform--content {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 40%;
 }
 
-#plantel {
-  margin: 20px;
+.container {
+  margin: 40px !important;
 }
 
-#textogaleria {
-  font-size: small;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+#buscadorSocios {
+  background-color: white !important;
 }
 
 footer {
