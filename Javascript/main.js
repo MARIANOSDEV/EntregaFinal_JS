@@ -34,25 +34,23 @@ class pago {
 const pagos = []
 
 //variables
-let sociosDiv = document.getElementById("sociosDiv")
 
-let boton = document.getElementById("botones")
 
 //funciones
+let botonAsociarse = document.getElementById("botonAsociarse")
 
 function ingresarNuevoSocio(tomaArray){
-    let nombreNuevoSocio = prompt("Ingrese nombre y apellido")
-    let edadSocio = prompt("Ingrese su edad")
-    while (isNaN(edadSocio)){
-        edadSocio = parseInt(prompt("Ingresar correctamente."))
-        }
-    let cantidadAbonos = parseInt(prompt(`Cantidad de abonos.`))
-    while (isNaN(cantidadAbonos)){
-        cantidadAbonos = parseInt(prompt("Ingresar correctamente."))
-        }
+    let nombreNuevoSocio = document.getElementById("nombreYapellido").value
+    let edadSocio = document.getElementById("edad").value
+    let cantidadAbonos = parseInt(document.getElementById("abonos").value)
     ultimoAnioPago = 2022 + cantidadAbonos
     const nuevoSocio = new Socio(tomaArray.length+1, nombreNuevoSocio, detectarCategoriaCorrecta(edadSocio), cuotaPorCategoria(edadSocio), ultimoAnioPago)
     tomaArray.push(nuevoSocio)
+    alert(`Usted ha completa el registro correctamente!
+    Bienvenido socio N°${tomaArray.length}, ${nombreNuevoSocio}.`)
+    nombreNuevoSocio.value =""
+    edadSocio.value =""
+    cantidadAbonos.value =""
 }
 
 function ingresarPago(tomaArray){
@@ -83,6 +81,16 @@ function consultarPadronSocios(tomaArray){
         sociosDiv.append(verSocio)
     }
 }
+
+function noEncontrado(){
+    sociosDiv.innerHTML = ""
+    let verSocio = document.createElement("tr")
+    verSocio.innerHTML =`
+        <th scope="row">Error</th>
+        <td>Datos no encontrados</td>`
+    sociosDiv.append(verSocio)
+}
+
 function detectarCategoriaCorrecta(rangoEdad){
     if (rangoEdad < 12 ){
         return "Socio Infantil"
@@ -124,61 +132,58 @@ function buscarNumeroSocio (){
     let numeroSocio = prompt("Por favor ingrese su numero de socio")
     while (buscarCategoriaSocios(socios, numeroSocio) == undefined && numeroSocio != null)
     {numeroSocio = prompt(`Ingrese su numero de socio correctamente`)}
-return numeroSocio}
-function buscarSocioPorNombre(tomaArray){
-    let socioBusqueda = prompt("Ingrese su nombre o apellido.")
-    let buscar = tomaArray.filter(
+    return numeroSocio}
+
+function buscarSocioPorNumero(parametro){
+    let socioBusqueda = parseInt(parametro)
+    let buscar = socios.filter(
+        (socio) => socio.id == socioBusqueda )
+    if(buscar.length == 0){
+        noEncontrado()
+    }
+    else if(buscar.length === socios.length)
+        {}
+        else{
+        consultarPadronSocios(buscar)
+        }
+    }    
+function buscarSocioPorNombre(parametro){
+    let socioBusqueda = parametro.toLowerCase()
+    let buscar = socios.filter(
         (socio) => socio.nombre.toLowerCase().includes(socioBusqueda))
     if(buscar.length == 0){
-        console.log(`${socioBusqueda} no se encuentra en nuestro Padron, por favor ingrese los datos correctos.`)
-    }else{
-        consultarPadronSocios(buscar)
+        noEncontrado()
     }
-}
-
-function navegador(){
-    let salirMenu = false
-    do{
-        salirMenu = navegadorIndice(salirMenu)
-    }while(!salirMenu)
-}
-
-function navegadorIndice(salir){
-    let opcionIngresada = prompt(
-`Bienvenido al Club Atletico Independiente, seccion Socios!
-Para poder ayudarlo, ingrese la opción deseada
-                1 - Asociarse
-                2 - Abonar Cuota
-                3 - Consultar informacion de socio
-                Funciones exclusivas para admin:
-                -- (Password para UAT "admin")
-                0 - Salir del menu`)*1
-    
-        switch(opcionIngresada){
-            case 1:
-                ingresarNuevoSocio(socios)  
-            break
-            case 2:
-                ingresarPago(pagos)
-            break
-            case 3:
-                buscarSocioPorNombre(socios)
-            break
-            case 4:
-                
-            break
-            case 0:
-                console.log("Gracias por ser parte del club mas grande del mundo! C.A.I.")
-                salir = true
-                return salir
-            default:
-                console.log("Ingrese una opción correcta")
-            break
+    else if(buscar.length === socios.length)
+        {}
+        else{
+        consultarPadronSocios(buscar)
         }
 }
 
+//DOM
 
-botones.onclick = () => {consultarPadronSocios(socios)}
+let sociosDiv = document.getElementById("sociosDiv")
+let botonPadron = document.getElementById("botonesPadron")
+let searchSocio = document.getElementById("buscarSocio")
+let searchSocioNumero = document.getElementById("buscarSocioNumero")
+
+
+botonPadron.onclick = () => {
+    consultarPadronSocios(socios)
+}
+searchSocio.oninput = () => {
+    buscarSocioPorNombre(searchSocio.value)
+}
+searchSocioNumero.oninput = () => {
+    buscarSocioPorNumero(searchSocioNumero.value)
+}
+
+botonAsociarse.onclick = () => {
+    ingresarNuevoSocio(socios)
+}
+
+
 // navegador()
 
 // let listaPrueba = document.getElementById("opcionesSocios")

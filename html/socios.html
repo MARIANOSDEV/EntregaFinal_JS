@@ -61,7 +61,7 @@
         <div class="formularios" id="opcionesSociosNo">
                 <div class="mainform--content">
                 <label for="socio">NOMBRE Y APELLIDO:</label>
-                <input type="text" placeholder="Ingrese su nombre y apellido" id="contacto">
+                <input type="text" placeholder="Ingrese su nombre y apellido" id="nombreYapellido">
                 </div>
                 <div class="mainform--content">
                 <label for="edad">Edad:</label>
@@ -71,32 +71,26 @@
                 <label for="abonos">Cantidad de abonos:</label>
                 <input type="number" placeholder="Ingrese su Edad" id="abonos">
                 </div>                
-                <div class="mainform--content">
-                <input type="submit" value="Asociarme ahora!"> 
+                <div class="mainform--content" id="botonAsociarse">
+                <input type="reset" value="Asociarme ahora!"> 
                 </div>
         </div>
 
-        <div class="formularios" id="opcionesSociosSi">
-                <h4>Buscar informacion de asociado:</h4>
-                <div class="mainform--content">
-                <label for="socio">NOMBRE O APELLIDO:</label>
-                <input type="text" placeholder="Ingrese su nombre y apellido" id="contacto">
+        <div class="container" id="opcionesSociosSi">
+            <div id="buscadorSocios">
+                <div class="row" id="barraBuscadorSocios">
+                    <div class="col 2">
+                        <input type="number" class="form-control" placeholder="Socio N°" id="buscarSocioNumero">
+                    </div>
+                    <div class="col 4">
+                        <input type="text" class="form-control" placeholder="Nombre y apellido..." id="buscarSocio">
+                    </div>
+                    <div class="col 3">
+                    </div>
+                    <div class="col 3">
+                        <button type="button" class="btn btn-danger" id="botonesPadron">Ver Padron</button>
+                    </div>
                 </div>
-                <div class="mainform--content">
-                <label for="edad">Numero de socio:</label>
-                <input type="number" placeholder="Ingrese su Edad" id="edad">
-                </div>
-                <div class="mainform--content">
-                <input type="submit" value="Consultar"> 
-                </div>
-        </div>
-        <div class="container">
-            <nav class="navbar navbar-light bg-light" id="buscadorSocios">
-                <div class="form-inline">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="botones">Buscar</button>
-                </div>
-              </nav>
             <table class="table">
                 <thead>
                   <tr>

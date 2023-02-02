@@ -296,6 +296,9 @@ header {
 #buscadorSocios {
   background-color: white !important;
 }
+#barraBuscadorSocios{
+  margin: 20px !important;
+}
 
 footer {
   width: 100%;
