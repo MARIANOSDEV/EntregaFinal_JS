@@ -10,16 +10,21 @@ if(localStorage.getItem("socio")){
     }}{
                
 }
-
+function noSerSocio(){
+    btnToggle.innerText = `Si`
+    btnToggle.className = `btn btn-outline-danger`
+    localStorage.setItem("socio", false)
+}
+function serSocio(){
+    btnToggle.innerText = `No`
+    btnToggle.className = `btn btn-danger`
+    localStorage.setItem("socio", true)
+} 
 btnToggle.addEventListener("click", ()=>{
 sociosSiNoBoton.classList.toggle(`classSociosSiNo`)
 if(JSON.parse(localStorage.getItem("socio")) == true){
-            btnToggle.innerText = `Si`
-            btnToggle.className = `btn btn-outline-danger`
-            localStorage.setItem("socio", false)
+        noSerSocio()
         }else{
-            btnToggle.innerText = `No`
-            btnToggle.className = `btn btn-danger`
-            localStorage.setItem("socio", true)
+        serSocio()
         }
     })

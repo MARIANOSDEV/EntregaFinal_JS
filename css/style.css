@@ -1,6 +1,337 @@
+@-webkit-keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@-webkit-keyframes desaparece {
+  0% {
+    opacity: 100%;
+  }
+  10% {
+    opacity: 90%;
+  }
+  20% {
+    opacity: 80%;
+  }
+  30% {
+    opacity: 70%;
+  }
+  40% {
+    opacity: 60%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  60% {
+    opacity: 60%;
+  }
+  70% {
+    opacity: 70%;
+  }
+  80% {
+    opacity: 80%;
+  }
+  90% {
+    opacity: 90%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+@keyframes desaparece {
+  0% {
+    opacity: 100%;
+  }
+  10% {
+    opacity: 90%;
+  }
+  20% {
+    opacity: 80%;
+  }
+  30% {
+    opacity: 70%;
+  }
+  40% {
+    opacity: 60%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  60% {
+    opacity: 60%;
+  }
+  70% {
+    opacity: 70%;
+  }
+  80% {
+    opacity: 80%;
+  }
+  90% {
+    opacity: 90%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+@-webkit-keyframes bounce {
+  20%, 50%, 80% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(25px);
+  }
+  60% {
+    transform: translateY(15px);
+  }
+}
+@keyframes bounce {
+  20%, 50%, 80% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(25px);
+  }
+  60% {
+    transform: translateY(15px);
+  }
+}
+@-webkit-keyframes round {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.25);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.5);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.25);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes round {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.25);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.5);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.25);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes cambio-fuente {
+  0% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+@keyframes cambio-fuente {
+  0% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+@-webkit-keyframes uno {
+  0% {
+    opacity: 100%;
+  }
+  30% {
+    opacity: 100%;
+    transform: scale(1.2);
+  }
+  60% {
+    opacity: 0%;
+  }
+  90% {
+    opacity: 0%;
+  }
+}
+@keyframes uno {
+  0% {
+    opacity: 100%;
+  }
+  30% {
+    opacity: 100%;
+    transform: scale(1.2);
+  }
+  60% {
+    opacity: 0%;
+  }
+  90% {
+    opacity: 0%;
+  }
+}
+@-webkit-keyframes dos {
+  0% {
+    opacity: 100%;
+  }
+  30% {
+    opacity: 0%;
+  }
+  60% {
+    opacity: 100%;
+    transform: scale(1.2);
+  }
+  90% {
+    opacity: 0%;
+  }
+}
+@keyframes dos {
+  0% {
+    opacity: 100%;
+  }
+  30% {
+    opacity: 0%;
+  }
+  60% {
+    opacity: 100%;
+    transform: scale(1.2);
+  }
+  90% {
+    opacity: 0%;
+  }
+}
+@-webkit-keyframes tres {
+  0% {
+    opacity: 100%;
+  }
+  30% {
+    opacity: 0%;
+  }
+  60% {
+    opacity: 0%;
+  }
+  90% {
+    opacity: 100%;
+    transform: scale(1.2);
+  }
+}
+@keyframes tres {
+  0% {
+    opacity: 100%;
+  }
+  30% {
+    opacity: 0%;
+  }
+  60% {
+    opacity: 0%;
+  }
+  90% {
+    opacity: 100%;
+    transform: scale(1.2);
+  }
+}
+@-webkit-keyframes loader {
+  0% {
+    translate: 100px 0px;
+    background-color: red;
+  }
+  25% {
+    translate: 100px -20px;
+    background-color: greenyellow;
+    border-radius: 50%;
+  }
+  50% {
+    translate: -100px 0px;
+    background-color: orange;
+    scale: 1;
+  }
+  75% {
+    translate: -100px -50px;
+    background-color: yellow;
+    rotate: 45deg;
+    scale: 1.6;
+  }
+  100% {
+    translate: 100px 0px;
+    rotate: -45deg;
+  }
+}
+@keyframes loader {
+  0% {
+    translate: 100px 0px;
+    background-color: red;
+  }
+  25% {
+    translate: 100px -20px;
+    background-color: greenyellow;
+    border-radius: 50%;
+  }
+  50% {
+    translate: -100px 0px;
+    background-color: orange;
+    scale: 1;
+  }
+  75% {
+    translate: -100px -50px;
+    background-color: yellow;
+    rotate: 45deg;
+    scale: 1.6;
+  }
+  100% {
+    translate: 100px 0px;
+    rotate: -45deg;
+  }
+}
 * {
   margin: 0;
   padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: darkgrey RED;
+}
+* a:hover {
+  text-decoration: none;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: RED;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 20px;
+  border: 1px solid darkgrey;
 }
 
 html {
@@ -11,6 +342,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  overflow-y: scroll;
 }
 
 .navbar {
@@ -265,16 +597,6 @@ header {
   transition: width 2s, height 2s, transform 2s, opacity 3s;
 }
 
-#opcionesSocios {
-  display: flex;
-  margin: 25px;
-  flex-direction: row;
-  justify-content: center;
-}
-#opcionesSocios #consultaSocios {
-  margin-right: 10px;
-}
-
 #opcionesSociosSi {
   display: none;
 }
@@ -288,22 +610,80 @@ header {
 }
 
 .formularios {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "a1 a2";
+  place-self: center;
+  margin: 5px;
+}
+.formularios div #fotoAsociate {
+  grid-area: a1;
+  display: grid;
+  place-content: center;
+  margin-left: 10%;
+  margin-top: 5%;
+  max-width: 80%;
+}
+.formularios #formularioAsociate {
+  display: grid;
+  grid-area: a2;
+  place-self: center;
+  width: 95%;
+  color: red;
+}
+
+.mainform--content {
   display: flex;
   flex-direction: column;
   margin: 5px;
-  align-items: center;
-  justify-content: center;
+  font-size: calc(0.3em + 1.2vw);
+  font-weight: bold;
 }
-.formularios .mainform--content {
+
+#modalAbonar {
   display: flex;
   flex-direction: column;
-  margin: 10px;
-  width: 40%;
+  align-items: right;
+  margin: 5px;
+  font-size: calc(0.5em + 0.5vw);
+  font-weight: bold;
+}
+
+.mainform--content--abonar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  margin: 5px;
+  font-size: calc(0.5em + 1vw);
+  font-weight: bold;
+}
+
+.inputShort {
+  max-width: 3em;
 }
 
 .container {
   margin: 60px !important;
   color: red !important;
+}
+
+#opcionesSocios {
+  display: flex;
+  place-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+#consultaSocios {
+  font-size: calc(1em + 1.4vw);
+  font-weight: bold;
+  color: rgb(255, 0, 0);
+}
+
+.btn-danger {
+  background-color: red !important;
 }
 
 #buscadorSocios {
@@ -312,6 +692,16 @@ header {
 
 #barraBuscadorSocios {
   padding: 20px !important;
+}
+
+#botonesPadron {
+  margin-left: 60%;
+  font-size: calc(0.2em + 1vw);
+}
+
+#botonesPagos {
+  margin-left: 30%;
+  font-size: calc(0.2em + 1vw);
 }
 
 input[type=number] {
@@ -324,6 +714,64 @@ th {
 
 td {
   text-align: center;
+}
+
+button#botonAsociarse {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  font-size: calc(0.5em + 1vw);
+  font-weight: bold;
+  color: red;
+  position: relative;
+  border-radius: 12px;
+}
+
+button#botonAsociarse::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, red, rgb(210, 105, 0), rgb(223, 0, 63), rgb(172, 0, 0), red, rgb(210, 105, 0), rgb(223, 0, 63), rgb(172, 0, 0));
+  background-size: 800%;
+  border-radius: 10px;
+  filter: blur(8px);
+  -webkit-animation: glowing 20s linear infinite;
+  animation: glowing 20s linear infinite;
+}
+
+#cierreAnimado {
+  display: flex;
+  flex-direction: column;
+  width: 2.2rem;
+  height: 3rem;
+  border: 0;
+  background: transparent;
+  gap: 0.65rem;
+}
+
+#cierreAnimado > div {
+  background: red;
+  height: 2px;
+  width: 100%;
+  border-radius: 5px;
+  transition: all 0.5s;
+  transform-origin: left;
+}
+
+#cierreAnimado:hover div:first-child {
+  transform: rotate(45deg);
+}
+
+#cierreAnimado:hover div:nth-child(2) {
+  opacity: 0;
+}
+
+#cierreAnimado:hover div:last-child {
+  transform: rotate(-45deg);
 }
 
 footer {

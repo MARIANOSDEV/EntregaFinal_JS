@@ -1,8 +1,26 @@
-*
-{
+*{
     margin:0;
     padding:0;
+    scrollbar-width: thin;
+    scrollbar-color: darkgrey RED;
+    a:hover{
+            text-decoration: none;
+            }
 }
+*::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: RED;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 20px;
+    border: 1px solid darkgrey;
+  }
+  
 html {
     height: 100%;
 }
@@ -11,6 +29,7 @@ body
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    overflow-y: scroll;
 }
 .navbar
 {
