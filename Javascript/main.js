@@ -39,9 +39,8 @@ function checkIngreso(func, array){
 //funciones accesorios
 
 function informarCuota(){
-    buscarSocios(socios, parseInt(formPago[0].value))
+    buscarSocios(socios, parseInt(formularioPago[0].value))
 }
-console.log(`${buscarSocios(socios, parseInt(formPago[0].value)).nombre}, Cat: "${buscarSocios(socios, parseInt(formPago[0].value)).categoria}" Valor Cuota: $${buscarSocios(socios, parseInt(formPago[0].value)).cuotaValor}`)
 
 function consultarPadronSocios(tomaArray){
     sociosDiv.innerHTML = ""
@@ -156,3 +155,4 @@ searchSocioNumero.oninput = () => {
 botonAsociarse.onclick = () => {
     checkIngreso(ingresarNuevoSocio,socios)
 }
+// console.log(`${buscarSocios(socios, formularioPago[0].value).nombre}, Cat: "${buscarSocios(socios, formularioPago[0].value).categoria}" Valor Cuota: $${buscarSocios(socios, formularioPago[0].value).cuotaValor}`)
