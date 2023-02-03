@@ -609,38 +609,70 @@ header {
   display: none;
 }
 
-.formularios {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 50% 50%;
-  grid-template-areas: "a1 a2";
-  place-self: center;
-  margin: 5px;
+@media screen and (min-width: 576px) {
+  .formularios {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "a1 a2";
+    place-self: center;
+    margin: 5px;
+  }
+  .formularios div #fotoAsociate {
+    grid-area: a1;
+    display: grid;
+    place-content: center;
+    margin-left: 10%;
+    margin-top: 5%;
+    max-width: 80%;
+  }
+  .formularios #formularioAsociate {
+    display: grid;
+    grid-area: a2;
+    place-self: center;
+    width: 95%;
+    color: red;
+  }
+  .formularios .mainform--content {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    font-size: calc(0.3em + 1.2vw);
+    font-weight: bold;
+  }
 }
-.formularios div #fotoAsociate {
-  grid-area: a1;
-  display: grid;
-  place-content: center;
-  margin-left: 10%;
-  margin-top: 5%;
-  max-width: 80%;
+@media screen and (max-width: 576px) {
+  .formularios {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 1fr;
+    grid-template-areas: "a1" "a2";
+    place-self: center;
+    margin: 5px;
+  }
+  .formularios div #fotoAsociate {
+    grid-area: a1;
+    display: grid;
+    place-content: center;
+    margin-left: 10%;
+    margin-top: 5%;
+    max-width: 80%;
+  }
+  .formularios #formularioAsociate {
+    display: grid;
+    grid-area: a2;
+    place-self: center;
+    width: 95%;
+    color: red;
+  }
+  .formularios .mainform--content {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    font-size: calc(0.8em + 1.2vw);
+    font-weight: bold;
+  }
 }
-.formularios #formularioAsociate {
-  display: grid;
-  grid-area: a2;
-  place-self: center;
-  width: 95%;
-  color: red;
-}
-
-.mainform--content {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  font-size: calc(0.3em + 1.2vw);
-  font-weight: bold;
-}
-
 #modalAbonar {
   display: flex;
   flex-direction: column;

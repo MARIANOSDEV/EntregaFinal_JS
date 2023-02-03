@@ -15,7 +15,7 @@
 {
     display: none;
 }
-
+@media screen and (min-width:576px){
 .formularios{
     display: grid;
     grid-template-rows: 1fr;
@@ -38,14 +38,47 @@
         width: 95%;
         color: red;
     }
-}
-.mainform--content{
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
-    font-size: calc(0.3em + 1.2vw);
-    font-weight: bold;
+    .mainform--content{
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        font-size: calc(0.3em + 1.2vw);
+        font-weight: bold;
     }
+}}
+@media screen and (max-width:576px){
+    .formularios{
+        display: grid;
+        grid-template-rows: 50% 50%;
+        grid-template-columns: 1fr;
+        grid-template-areas:    "a1"
+                                "a2";
+        place-self: center;
+        margin: 5px;   
+        div #fotoAsociate{
+            grid-area: a1;
+            display: grid;
+            place-content: center;
+            margin-left: 10%;
+            margin-top: 5%;
+            max-width: 80%;
+        }
+        #formularioAsociate{
+            display: grid;
+            grid-area: a2;
+            place-self: center;
+            width: 95%;
+            color: red;
+        }
+        .mainform--content{
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            font-size: calc(.8em + 1.2vw);
+            font-weight: bold;
+        }
+    }}
+
 #modalAbonar{
     display: flex;
     flex-direction: column;
