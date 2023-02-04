@@ -1,5 +1,4 @@
 //Seteo primera vez.
-
 let socios = []
 
 if(localStorage.getItem("padron"))  {
@@ -19,4 +18,3 @@ if(localStorage.getItem("contabilidad"))  {
 else    {
     localStorage.setItem("contabilidad", JSON.stringify(pagos))
 }
-

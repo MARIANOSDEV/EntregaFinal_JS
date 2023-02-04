@@ -673,15 +673,6 @@ header {
     font-weight: bold;
   }
 }
-#modalAbonar {
-  display: flex;
-  flex-direction: column;
-  align-items: right;
-  margin: 5px;
-  font-size: calc(0.5em + 0.5vw);
-  font-weight: bold;
-}
-
 .mainform--content--abonar {
   display: flex;
   flex-direction: row;
@@ -804,6 +795,26 @@ button#botonAsociarse::before {
 
 #cierreAnimado:hover div:last-child {
   transform: rotate(-45deg);
+}
+
+#formPago {
+  background: linear-gradient(red, white 35%, white 70%, red);
+}
+
+#modalAbonar {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  margin: 5px;
+  font-size: calc(0.5em + 0.5vw);
+  font-weight: bold;
+}
+
+#indicaCuotaValor p {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  text-align: right;
 }
 
 footer {

@@ -17,7 +17,6 @@ class pago {
         this.categoria = categoria,
         this.cantidadCuotas = cantidadCuotas
         this.totalPago = totalPago
-        this.actualizaAnioPago = actualizaAnioPago
     }
 }
 

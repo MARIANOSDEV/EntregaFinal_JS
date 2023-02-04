@@ -1,7 +1,7 @@
 let btnToggle = document.getElementById("toggleMode")
 let sociosSiNoBoton = document.getElementById("sociosSiNo")
-
 //existe lo captura, sino lo setea
+
 if(localStorage.getItem("socio")){
     if(JSON.parse(localStorage.getItem("socio")) == true){
         btnToggle.innerText = `No`

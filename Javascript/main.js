@@ -11,21 +11,14 @@ let searchSocio = document.getElementById("buscarSocio")
 let searchSocioNumero = document.getElementById("buscarSocioNumero")
 let formAsociarse = document.getElementById("formAsociarse")
 let formularioPago = document.getElementById("formPago")
+let indicaCuotaValor = document.getElementById("indicaCuotaValor")
+let botonAbonar = document.getElementById("botonAbonar")
+let botonVaciarInputPago = document.getElementById("vaciarInputPago")
 
 //funciones principales
 
-function ingresarNuevoSocio(tomaArray){
-    ultimoAnioPago = 2022 + parseInt(formAsociarse[2].value)
-    const nuevoSocio = new Socio(tomaArray.length+1, formAsociarse[0].value, detectarCategoriaCorrecta(parseInt(formAsociarse[1].value)), cuotaPorCategoria(parseInt(formAsociarse[2].value)), ultimoAnioPago)
-    tomaArray.push(nuevoSocio)
-    localStorage.setItem("padron", JSON.stringify(socios)) 
-    alert(`    Usted ha completa el registro correctamente!
-    Bienvenido socio N°${tomaArray.length}, ${formAsociarse[0].value}.`)
-    formAsociarse.reset()
-}
-
 function checkIngreso(func, array){
-    if(inputSocioAlta.value != "" && inputEdadAlta.value != "" && inputAbonosAlta.value != "")
+    if(inputSocioAlta.value != "" && isNaN(inputSocioAlta.value) && inputEdadAlta.value != "" && inputAbonosAlta.value != "")
     {
         func(array)
         sociosSiNoBoton.classList.toggle(`classSociosSiNo`)
@@ -36,10 +29,48 @@ function checkIngreso(func, array){
         alert("Por favor complete todos los campos correctamente!")}
 }
 
+function ingresarNuevoSocio(tomaArray){
+    ultimoAnioPago = 2022 + parseInt(formAsociarse[2].value)
+    const nuevoSocio = new Socio(tomaArray.length+1, formAsociarse[0].value, detectarCategoriaCorrecta(parseInt(formAsociarse[1].value)), cuotaPorCategoria(parseInt(formAsociarse[1].value)), ultimoAnioPago)
+    tomaArray.push(nuevoSocio)
+    localStorage.setItem("padron", JSON.stringify(socios)) 
+    alert(`    Usted ha completa el registro correctamente!
+    Bienvenido socio N°${tomaArray.length}, ${formAsociarse[0].value}.`)
+    formAsociarse.reset()
+}
+
+function ingresarPago(){
+    if( buscarSocios(socios, formularioPago[0].value) == undefined){}
+    else{
+        let pagoTotal = formularioPago[1].value*buscarSocios(socios, formularioPago[0].value).cuotaValor
+        let actualizarPago = buscarSocios(socios, formularioPago[0].value).ultimoAnioPago + parseInt(formularioPago[0].value)
+        const nuevoPago = new pago(pagos.length+1,formularioPago[0].value,buscarSocios(socios, formularioPago[0].value).categoria,formularioPago[1].value, pagoTotal)
+        pagos.push(nuevoPago)
+        localStorage.setItem("contabilidad", JSON.stringify(pagos))
+        buscarSocios(socios, formularioPago[0].value).ultimoAnioPago = actualizarPago
+        alert(`El pago fue exitoso, usted tiene abonado hasta el ${actualizarPago}`)
+        consultarPadronSocios(socios)
+        formPago.reset()
+    }
+}
+
+
 //funciones accesorios
 
 function informarCuota(){
-    buscarSocios(socios, parseInt(formularioPago[0].value))
+    if( buscarSocios(socios, formularioPago[0].value) == undefined){
+        let verCuota = document.createElement("div")        
+    verCuota.innerHTML =`   <p>I n d i c a r</p>
+                            <p>I n f o </p>
+                            <p>C o r r e c t a</p>`
+    indicaCuotaValor.replaceChild(verCuota,indicaCuotaValor.firstElementChild)
+    }
+    else
+    {let verCuota = document.createElement("div")        
+    verCuota.innerHTML =`   <p>${buscarSocios(socios, formularioPago[0].value).nombre}</p>
+                            <p>Cat: "${buscarSocios(socios, formularioPago[0].value).categoria}"</p>
+                            <p>Valor Cuota: $${buscarSocios(socios, formularioPago[0].value).cuotaValor}</p>`
+    indicaCuotaValor.replaceChild(verCuota,indicaCuotaValor.firstElementChild)  }
 }
 
 function consultarPadronSocios(tomaArray){
@@ -101,18 +132,12 @@ function buscarSocios(tomaArray, parametro){
     )
     if(socioEncontrado == undefined)
         {if(socioBuscado != null)
-        {console.log(`${socioBuscado} no se encuentra en nuestro padron, por favor volver a consultar correctamente.`)}
+        {}
         else{}}
     else{
         return socioEncontrado
     }
 }
-
-function buscarNumeroSocio (){
-    let numeroSocio = prompt("Por favor ingrese su numero de socio")
-    while (buscarSocios(socios, numeroSocio) == undefined && numeroSocio != null)
-    {numeroSocio = prompt(`Ingrese su numero de socio correctamente`)}
-    return numeroSocio}
 
 function buscarSocioPorNumero(parametro){
     let socioBusqueda = parseInt(parametro)
@@ -123,7 +148,8 @@ function buscarSocioPorNumero(parametro){
     else if(buscar.length === 0)
         {noEncontrado()}
         else{
-        consultarPadronSocios(buscar)
+            consultarPadronSocios(buscar)
+            return buscar
         }
     }
     
@@ -136,7 +162,7 @@ function buscarSocioPorNombre(parametro){
     else if(buscar.length == 0)
         {noEncontrado()}
         else{
-        consultarPadronSocios(buscar)
+            consultarPadronSocios(buscar)
         }
 }
 
@@ -155,4 +181,13 @@ searchSocioNumero.oninput = () => {
 botonAsociarse.onclick = () => {
     checkIngreso(ingresarNuevoSocio,socios)
 }
-// console.log(`${buscarSocios(socios, formularioPago[0].value).nombre}, Cat: "${buscarSocios(socios, formularioPago[0].value).categoria}" Valor Cuota: $${buscarSocios(socios, formularioPago[0].value).cuotaValor}`)
+formularioPago[0].oninput = () => {
+    informarCuota()
+}
+botonAbonar.onclick = () => {
+    ingresarPago()
+}
+
+botonVaciarInputPago.onclick = () =>{
+    formPago.reset()
+}
