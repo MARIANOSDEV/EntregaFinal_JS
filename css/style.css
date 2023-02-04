@@ -819,8 +819,8 @@ button#botonAsociarse::before {
 }
 
 #formPago {
-  background-image: url(/multimedia/fondohistoria.jpg);
-  background-size: 17vw;
+  background-image: url(../multimedia/fondohistoria.jpg);
+  background-size: 16vw;
   background-repeat: no-repeat;
 }
 
@@ -829,7 +829,7 @@ button#botonAsociarse::before {
   flex-direction: column;
   align-items: right;
   margin: 5px;
-  font-size: calc(0.5em + 0.5vw);
+  font-size: calc(0.95em + 0.5vw);
   font-weight: bold;
 }
 
