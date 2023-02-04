@@ -26,7 +26,9 @@ function checkIngreso(func, array){
         consultarPadronSocios(socios)
     }
     else{
-        alert("Por favor complete todos los campos correctamente!")}
+        Swal.fire({  confirmButtonColor: '#ff0000',
+                    title:`Por favor complete todos los campos correctamente!`})
+}
 }
 
 function ingresarNuevoSocio(tomaArray){
@@ -37,6 +39,7 @@ function ingresarNuevoSocio(tomaArray){
     Swal.fire({
         position: 'center',
         icon: 'success',
+        confirmButtonColor: '#ff0000',
         title: `    Usted ha completa el registro correctamente!
         Bienvenido socio N°${tomaArray.length}`,
         showConfirmButton: false,
@@ -58,6 +61,7 @@ function ingresarPago(){
             position: 'top-end',
             icon: 'success',
             title: `El pago fue exitoso, usted tiene abonado hasta el ${actualizarPago}`,
+            confirmButtonColor: '#ff0000',
             showConfirmButton: false,
             timer: 3000
           })
