@@ -189,7 +189,7 @@ button#botonAsociarse::before{
 }
 #formPago{
     background-image: url(../multimedia/fondohistoria.jpg);
-    background-size: 16vw;
+    background-size: calc(4em + 10vw);
     background-repeat: no-repeat;
 }
 #modalAbonar{

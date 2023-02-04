@@ -33,9 +33,15 @@ function ingresarNuevoSocio(tomaArray){
     ultimoAnioPago = 2022 + parseInt(formAsociarse[2].value)
     const nuevoSocio = new Socio(tomaArray.length+1, formAsociarse[0].value, detectarCategoriaCorrecta(parseInt(formAsociarse[1].value)), cuotaPorCategoria(parseInt(formAsociarse[1].value)), ultimoAnioPago)
     tomaArray.push(nuevoSocio)
-    localStorage.setItem("padron", JSON.stringify(socios)) 
-    alert(`    Usted ha completa el registro correctamente!
-    Bienvenido socio N°${tomaArray.length}, ${formAsociarse[0].value}.`)
+    localStorage.setItem("padron", JSON.stringify(socios))
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `    Usted ha completa el registro correctamente!
+        Bienvenido socio N°${tomaArray.length}`,
+        showConfirmButton: false,
+        timer: 4000
+      })
     formAsociarse.reset()
 }
 
@@ -48,7 +54,13 @@ function ingresarPago(){
         pagos.push(nuevoPago)
         localStorage.setItem("contabilidad", JSON.stringify(pagos))
         buscarSocios(socios, formularioPago[0].value).ultimoAnioPago = actualizarPago
-        alert(`El pago fue exitoso, usted tiene abonado hasta el ${actualizarPago}`)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `El pago fue exitoso, usted tiene abonado hasta el ${actualizarPago}`,
+            showConfirmButton: false,
+            timer: 3000
+          })
         consultarPadronSocios(socios)
         formPago.reset()
     }
@@ -56,6 +68,8 @@ function ingresarPago(){
 
 
 //funciones accesorios
+
+
 
 function limpiarInformarCuota(){
     if(formularioPago[0].value == ""){
@@ -197,11 +211,9 @@ botonAsociarse.onclick = () => {
 formularioPago[0].addEventListener("input", ()=>{
     informarCuota()
 })
-
 formularioPago[0].addEventListener("blur", ()=>{
     limpiarInformarCuota()
 })
-
 botonAbonar.onclick = () => {
     ingresarPago()
 }
