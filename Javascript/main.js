@@ -43,7 +43,7 @@ function ingresarPago(){
     if( buscarSocios(socios, formularioPago[0].value) == undefined){}
     else{
         let pagoTotal = formularioPago[1].value*buscarSocios(socios, formularioPago[0].value).cuotaValor
-        let actualizarPago = buscarSocios(socios, formularioPago[0].value).ultimoAnioPago + parseInt(formularioPago[0].value)
+        let actualizarPago = buscarSocios(socios, formularioPago[0].value).ultimoAnioPago + parseInt(formularioPago[1].value)
         const nuevoPago = new pago(pagos.length+1,formularioPago[0].value,buscarSocios(socios, formularioPago[0].value).categoria,formularioPago[1].value, pagoTotal)
         pagos.push(nuevoPago)
         localStorage.setItem("contabilidad", JSON.stringify(pagos))
