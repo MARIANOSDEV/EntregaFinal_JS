@@ -126,7 +126,7 @@
     margin-left: 30%;
     font-size: calc(0.2em + 1vw);
 }
-input[type=number] { -moz-appearance:textfield; }
+
 th{
     text-align: center;
 }
@@ -188,7 +188,9 @@ button#botonAsociarse::before{
     transform: rotate(-45deg);
 }
 #formPago{
-background: linear-gradient(red, white 35%, white 70%, red)
+background-image: url(/multimedia/fondohistoria.jpg);
+background-size: 17vw;
+background-repeat: no-repeat;
 }
 #modalAbonar{
     display: flex;

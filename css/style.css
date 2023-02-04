@@ -349,6 +349,31 @@ body {
   background-color: RED !important;
 }
 
+Input {
+  border: 1px solid grey !important;
+  border-radius: 12px !important;
+  transition: all 0.3s !important;
+}
+
+Input:Focus {
+  Background-color: rgba(255, 183, 183, 0.277) !important;
+  border: 1px solid red !important;
+  outline: none !important;
+  border-radius: 5px !important;
+  transform: scale(1.01) in !important;
+  box-shadow: 2px 2px 5px rgba(255, 1, 1, 0.416) !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 header {
   width: 100%;
   height: 100%;
@@ -727,10 +752,6 @@ header {
   font-size: calc(0.2em + 1vw);
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 th {
   text-align: center;
 }
@@ -798,7 +819,9 @@ button#botonAsociarse::before {
 }
 
 #formPago {
-  background: linear-gradient(red, white 35%, white 70%, red);
+  background-image: url(/multimedia/fondohistoria.jpg);
+  background-size: 17vw;
+  background-repeat: no-repeat;
 }
 
 #modalAbonar {

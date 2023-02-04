@@ -57,16 +57,29 @@ function ingresarPago(){
 
 //funciones accesorios
 
-function informarCuota(){
-    if( buscarSocios(socios, formularioPago[0].value) == undefined){
+function limpiarInformarCuota(){
+    if(formularioPago[0].value == ""){
         let verCuota = document.createElement("div")        
-    verCuota.innerHTML =`   <p>I n d i c a r</p>
+        verCuota.innerHTML =`   <p>S o c i o</p>
+                                <p>I n f o</p>
+                                <p>C u o t a</p>`
+    indicaCuotaValor.replaceChild(verCuota,indicaCuotaValor.firstElementChild)
+    }
+    else{}
+}
+
+function informarCuota(){
+    if(formularioPago[0].value == ""){
+    }
+    else if(buscarSocios(socios, formularioPago[0].value) == undefined){
+        let verCuota = document.createElement("div")        
+        verCuota.innerHTML =`   <p>I n d i c a r</p>
                             <p>I n f o </p>
                             <p>C o r r e c t a</p>`
     indicaCuotaValor.replaceChild(verCuota,indicaCuotaValor.firstElementChild)
     }
-    else
-    {let verCuota = document.createElement("div")        
+    else{
+    let verCuota = document.createElement("div")        
     verCuota.innerHTML =`   <p>${buscarSocios(socios, formularioPago[0].value).nombre}</p>
                             <p>Cat: "${buscarSocios(socios, formularioPago[0].value).categoria}"</p>
                             <p>Valor Cuota: $${buscarSocios(socios, formularioPago[0].value).cuotaValor}</p>`
@@ -181,13 +194,19 @@ searchSocioNumero.oninput = () => {
 botonAsociarse.onclick = () => {
     checkIngreso(ingresarNuevoSocio,socios)
 }
-formularioPago[0].oninput = () => {
+formularioPago[0].addEventListener("input", ()=>{
     informarCuota()
-}
+})
+
+formularioPago[0].addEventListener("blur", ()=>{
+    limpiarInformarCuota()
+})
+
 botonAbonar.onclick = () => {
     ingresarPago()
 }
 
 botonVaciarInputPago.onclick = () =>{
     formPago.reset()
+    limpiarInformarCuota()
 }
