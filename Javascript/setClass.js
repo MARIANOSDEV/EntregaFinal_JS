@@ -5,18 +5,18 @@ class Socio {
         this.id = id,
         this.nombre = nombre,
         this.categoria = categoria,
-        this.cuotaValor = cuotaValor
+        this.cuotaValor = cuotaValor,
         this.ultimoAnioPago = ultimoAnioPago
     }
 }
 
-class pago {
-    constructor(cuponPago, id, categoria, cantidadCuotas, totalPago, actualizaAnioPago){
-        this.cuponPago = cuponPago,
+class SocioBaja {
+    constructor(id, nombre, categoria, cuotaValor, ultimoAnioPago){
         this.id = id,
+        this.nombre = nombre,
         this.categoria = categoria,
-        this.cantidadCuotas = cantidadCuotas
-        this.totalPago = totalPago
+        this.cuotaValor = cuotaValor,
+        this.ultimoAnioPago = ultimoAnioPago
     }
 }
 

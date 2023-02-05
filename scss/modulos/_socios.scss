@@ -129,9 +129,14 @@
 
 th{
     text-align: center;
+    justify-content: center;
 }
 td{
     text-align: center;
+}
+.btn-close{
+    text-align: center !important;
+    
 }
 button#botonAsociarse{
     cursor: pointer;
@@ -205,6 +210,9 @@ button#botonAsociarse::before{
     flex-direction: column;
     align-items: right;
     text-align: right;
+}
+.inactivo{
+    color: red;
 }
 
 
