@@ -14,16 +14,14 @@ let formularioPago = document.getElementById("formPago")
 let indicaCuotaValor = document.getElementById("indicaCuotaValor")
 let botonAbonar = document.getElementById("botonAbonar")
 let botonVaciarInputPago = document.getElementById("vaciarInputPago")
+let totalPago = document.getElementById("totalPago")
 
 //funciones principales
 
 function checkIngreso(func, array){
     if(inputSocioAlta.value != "" && isNaN(inputSocioAlta.value) && inputEdadAlta.value != "" && inputAbonosAlta.value != "")
     {
-        func(array)
-        sociosSiNoBoton.classList.toggle(`classSociosSiNo`)
-        serSocio()
-        consultarPadronSocios(socios, sociosBaja)
+        func(array)   
     }
     else{
         Swal.fire({  confirmButtonColor: '#ff0000',
@@ -31,46 +29,61 @@ function checkIngreso(func, array){
 }
 }
 
-
-
-
 function ingresarNuevoSocio(tomaArray){
-    ultimoAnioPago = 2022 + parseInt(formAsociarse[2].value)
-    let nuevoSocio = new Socio(tomaArray[tomaArray.length-1].id+1, formAsociarse[0].value, detectarCategoriaCorrecta(parseInt(formAsociarse[1].value)), cuotaPorCategoria(parseInt(formAsociarse[1].value)), ultimoAnioPago)
-    tomaArray.push(nuevoSocio)
-    localStorage.setItem("padron", JSON.stringify(socios))
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        confirmButtonColor: '#ff0000',
-        title: `    Usted ha completa el registro correctamente!
-        Bienvenido socio N°${nuevoSocio.id}`,
-        showConfirmButton: false,
-        timer: 4000
-      })
-    formAsociarse.reset()
-}
+        Swal.fire({
+        title: `${formAsociarse[0].value}. Confirma el alta?
+        Cant. de abonos: ${formAsociarse[2].value}. Total: $${formAsociarse[2].value*cuotaPorCategoria(parseInt(formAsociarse[1].value))}.`,
+        showDenyButton: true,
+        confirmButtonText: 'Confirmar',
+        denyButtonText: `Descartar`,
+        icon: 'question',
+        confirmButtonColor: '#008000',
+        }).then((result) => {
+        if (result.isConfirmed) {   
+        ultimoAnioPago = 2022 + parseInt(formAsociarse[2].value)
+        let nuevoSocio = new Socio(tomaArray[tomaArray.length-1].id+1, formAsociarse[0].value, detectarCategoriaCorrecta(parseInt(formAsociarse[1].value)), cuotaPorCategoria(parseInt(formAsociarse[1].value)), ultimoAnioPago)
+        tomaArray.push(nuevoSocio)
+        localStorage.setItem("padron", JSON.stringify(socios))
+        formAsociarse.reset()
+        sociosSiNoBoton.classList.toggle(`classSociosSiNo`)
+        serSocio()}
+        else{}
+        })}
+
 
 function ingresarPago(){
-    if( buscarSocios(socios, formularioPago[0].value) == undefined){}
+    if( buscarSocios(socios, formularioPago[0].value) == undefined || (formularioPago[1].value)<1){
+        resetFormularioPago()
+        Swal.fire('Error N° de socio // Cantidad de abonos incorrecta.', '', 'error')
+    }
     else{
-        let pagoTotal = formularioPago[1].value*buscarSocios(socios, formularioPago[0].value).cuotaValor
+        let total = buscarSocios(socios, formularioPago[0].value).cuotaValor * formularioPago[1].value
+        Swal.fire({
+        title: `Socio N° ${formularioPago[0].value}. Confirma el pago?
+        Cant. de abonos: ${formularioPago[1].value}. Total: $${total}.`,
+        showDenyButton: true,
+        confirmButtonText: 'Confirmar',
+        denyButtonText: `Descartar`,
+        icon: 'question',
+        confirmButtonColor: '#008000',
+        }).then((result) => {
+        if (result.isConfirmed) {
         let actualizarPago = buscarSocios(socios, formularioPago[0].value).ultimoAnioPago + parseInt(formularioPago[1].value)
         buscarSocios(socios, formularioPago[0].value).ultimoAnioPago = actualizarPago
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: `El pago por $${pagoTotal} fue exitoso. Abono hasta ${actualizarPago}`,
-            confirmButtonColor: '#ff0000',
-            showConfirmButton: false,
-            timer: 3000
-          })
         consultarPadronSocios(socios, sociosBaja)
         localStorage.setItem("padron", JSON.stringify(socios))
         localStorage.setItem("sociosBaja", JSON.stringify(sociosBaja))
-        formPago.reset()
+        Swal.fire('Pago confirmado.', '', 'success')
+        resetFormularioPago()
+        } else if (result.isDenied) {
+        Swal.fire('Pago cancelado.', '', 'info')
+        resetFormularioPago()
+        }
+      })
     }
 }
+
+
 
 function consultarPadronSocios(tomaArray, tomaArrayBaja){
     sociosDiv.innerHTML = ""
@@ -103,14 +116,31 @@ function consultarPadronSocios(tomaArray, tomaArrayBaja){
         sociosDiv.append(verSocio)}
         tomaArray.forEach((asociado)=>{
         document.getElementById(`eliminar${asociado.id}`).addEventListener("click", ()=>{
-        let lineaInfo = document.getElementById(`elementoPadron${asociado.id}`)
-        lineaInfo.remove()
-        let posicion = tomaArray.indexOf(asociado)
-        const bajasSocioStorage = new SocioBaja (asociado.id, asociado.nombre, asociado.categoria, asociado.cuotaValor, asociado.ultimoAnioPago)
-        tomaArray.splice(posicion, 1)
-        tomaArrayBaja.push(bajasSocioStorage)
-        localStorage.setItem("padron", JSON.stringify(tomaArray))
-        localStorage.setItem("sociosBaja", JSON.stringify(tomaArrayBaja))
+        Swal.fire({
+                title: `Socio N°${asociado.id}: Esta seguro que quiere darse de baja?`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Confirmar',
+                denyButtonText: `Descartar`,
+                icon: 'question',
+                confirmButtonColor: '#008000',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                let lineaInfo = document.getElementById(`elementoPadron${asociado.id}`)
+                lineaInfo.remove()
+                let posicion = tomaArray.indexOf(asociado)
+                const bajasSocioStorage = new SocioBaja (asociado.id, asociado.nombre, asociado.categoria, asociado.cuotaValor, asociado.ultimoAnioPago)
+                tomaArray.splice(posicion, 1)
+                tomaArrayBaja.push(bajasSocioStorage)
+                localStorage.setItem("padron", JSON.stringify(tomaArray))
+                localStorage.setItem("sociosBaja", JSON.stringify(tomaArrayBaja))
+                Swal.fire('Baja confirmada. Esperamos pueda volver pronto!', '', 'success')
+                } else if (result.isDenied) {
+                  Swal.fire('Baja cancelada.', '', 'info')
+                }
+              })
+           
+        
         })
     })
 
@@ -125,8 +155,8 @@ function informarCuota(){
     else if(buscarSocios(socios, formularioPago[0].value) == undefined){
         let verCuota = document.createElement("div")        
         verCuota.innerHTML =`   <p>I n d i c a r</p>
-                            <p>I n f o </p>
-                            <p>C o r r e c t a</p>`
+                                <p>I n f o </p>
+                                <p>C o r r e c t a</p>`
     indicaCuotaValor.replaceChild(verCuota,indicaCuotaValor.firstElementChild)
     }
     else{
@@ -146,6 +176,24 @@ function limpiarInformarCuota(){
     indicaCuotaValor.replaceChild(verCuota,indicaCuotaValor.firstElementChild)
     }
     else{}
+}
+
+function informarTotalPago(){
+    if((formularioPago[1].value)>=1){
+        let totalAAbonar = buscarSocios(socios, formularioPago[0].value).cuotaValor*formularioPago[1].value
+        totalPago.innerHTML =`<p>Total a abonar: $${totalAAbonar}</p>`
+    }
+    else{limpiarTotalPago()
+}}
+
+function limpiarTotalPago(){
+        totalPago.innerHTML =`<p>Total a abonar:</p>`
+}
+
+function resetFormularioPago(){
+        formularioPago.reset()
+        limpiarTotalPago()
+        limpiarInformarCuota()
 }
 
 
@@ -236,12 +284,11 @@ function cuotaPorCategoria(rangoEdad){
 }
 }
 
-
 //DOM
 
 
 botonPadron.onclick = () => {
-    consultarPadronSocios(socios, sociosBaja)
+    consultarPadronSocios(socios, sociosBaja) 
 }
 searchSocio.addEventListener("input", () =>{
     buscarSocioPorNombre(searchSocio.value)
@@ -255,7 +302,6 @@ searchSocioNumero.addEventListener("input", () =>{
 searchSocioNumero.addEventListener("focus", () =>{
     buscarSocioPorNumero(searchSocioNumero.value)
 })
-
 botonAsociarse.onclick = () => {
     checkIngreso(ingresarNuevoSocio,socios)
 }
@@ -265,15 +311,15 @@ formularioPago[0].addEventListener("input", ()=>{
 formularioPago[0].addEventListener("blur", ()=>{
     limpiarInformarCuota()
 })
+formularioPago[1].addEventListener("input", ()=>{
+    informarTotalPago()
+})
+formularioPago[1].addEventListener("reset", ()=>{
+    limpiarTotalPago()
+})
 botonAbonar.onclick = () => {
     ingresarPago()
 }
-
 botonVaciarInputPago.onclick = () =>{
-    formPago.reset()
-    limpiarInformarCuota()
+    resetFormularioPago()
 }
-
-
-
-   
