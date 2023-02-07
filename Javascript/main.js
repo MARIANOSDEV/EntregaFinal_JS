@@ -135,9 +135,14 @@ function consultarPadronSocios(tomaArray, tomaArrayBaja){
                 sociosBaja.push(bajasSocioStorage)
                 localStorage.setItem("padron", JSON.stringify(socios))
                 localStorage.setItem("sociosBaja", JSON.stringify(sociosBaja))
-                Swal.fire('Baja confirmada. Esperamos pueda volver pronto!', '', 'success')
+                Swal.fire({title: "Baja confirmada. Esperamos pueda volver pronto.",
+                            confirmButtonColor: '#ff0000',
+                            icon: 'success'
+                })
                 } else if (result.isDenied) {
-                  Swal.fire('Baja cancelada.', '', 'info')
+                  Swal.fire({title: "Baja cancelada.",
+                            confirmButtonColor: '#ff0000',
+                            icon: 'info'})
                 }
               })
            
