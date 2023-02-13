@@ -1,41 +1,50 @@
-*{
-    margin:0;
-    padding:0;
-    scrollbar-width: thin;
-    scrollbar-color: darkgrey RED;
-    a:hover{
-            text-decoration: none;
-            }
+* {
+  margin: 0;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: darkgrey RED;
+
+  a:hover {
+    text-decoration: none;
+  }
 }
+
 *::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  *::-webkit-scrollbar-track {
-    background: RED;
-  }
-  
-  *::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
-    border-radius: 20px;
-    border: 1px solid darkgrey;
-  }
-  
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: RED;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 20px;
+  border: 1px solid darkgrey;
+}
+
 html {
-    height: 100%;
+  height: 100%;
 }
-body
-{
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    overflow-y: scroll;
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(255, 249, 249, 0.81);
 }
-.navbar
-{
-    background-color: $color-principal !important;
+
+.row{
+  --bs-gutter-x: 0 !important;
 }
-Input{
+
+
+.navbar {
+  background-color: $color-principal !important;
+}
+
+Input {
   border: 1px solid grey !important;
   border-radius: 12px !important;
   transition: all .3s !important;
@@ -54,12 +63,15 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-  }
-input[type=number] { -moz-appearance:textfield; }
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 
 
-body.swal2-shown > [aria-hidden="true"] {
+body.swal2-shown>[aria-hidden="true"] {
   transition: 0.1s filter;
   filter: blur(10px);
 }

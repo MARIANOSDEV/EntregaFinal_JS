@@ -187,6 +187,11 @@ body {
   flex-direction: column;
   min-height: 100%;
   overflow-y: scroll;
+  background-color: rgba(255, 249, 249, 0.81);
+}
+
+.row {
+  --bs-gutter-x: 0 !important;
 }
 
 .navbar {
@@ -587,6 +592,7 @@ header {
 
 #barraBuscadorSocios {
   padding: 20px !important;
+  gap: 10px;
 }
 
 #botonesPadron {
@@ -694,6 +700,15 @@ button#botonAsociarse::before {
 
 .inactivo {
   color: red;
+}
+
+.clima {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin-right: 1em;
+  font-weight: bold;
 }
 
 footer {
