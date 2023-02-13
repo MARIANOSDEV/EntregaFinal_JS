@@ -14,6 +14,7 @@ function mostrarClima(){
         <span>Temp: ${JSON.stringify(data.main.temp)}°C, Humedad: %${JSON.stringify(data.main.humidity)}</span>`
         divVPClima.append(divClima)
     })
+    .finally(() =>{console.info("El clima se actualizo correctamente!")})
 }
 
 mostrarClima()
