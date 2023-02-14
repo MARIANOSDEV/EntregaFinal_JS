@@ -8,70 +8,51 @@ let datosArgentina = []
 let lat = ""
 let long = ""
 
-setTimeout(() => {
-    alert = ("Por favor, dar permisos de ubicacion para proporsionarte mejor calidad de informacion")
-    window.addEventListener('alert', ()=> {  
+
+function mostrarClima() {
     navigator.geolocation.getCurrentPosition((position) => {
         lat = position.coords.latitude
         long = position.coords.longitude
     })
-    console.log(lat)
-    console.log(long)
-},3000)})
-
-
-async function ciudadClima() {
-    if(JSON.parse(localStorage.getItem("geolocalizacion"))){}
-    else{
-    let localizacion = prompt("Indica tu ciudad (Ej, Villa Carlos Paz, Buenos Aires, Santa Fe...)")
-    localStorage.setItem("geolocalizacion", JSON.stringify(localizacion))}
-    let resp = await
-        fetch(`../city.list.json`)
-    objetosClima = await resp.json()
-    for (let elemento of objetosClima)
-        if (elemento.country == "AR") {
-            jsonClima.push(elemento)
-        }
-    geo = jsonClima.find(ele => ele.name == `${(JSON.parse(localStorage.getItem("geolocalizacion")))}`).id
-}
-
-
-function mostrarClima(parametro) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?id=${parametro}&lang=sp&appid=60703eaf0cf50845cb062140932336a9&units=metric`)
-
-        .then((resp) => resp.json())
-        .then((data) => {
-            divVPClima.innerHTML = ""
-            let divClima = document.createElement(`ul`)
-            divClima.className = `clima`
-            divClima.innerHTML = `
+    setTimeout(() => {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=sp&appid=60703eaf0cf50845cb062140932336a9&units=metric`)
+            .then((resp) => resp.json())
+            .then((data) => {
+                divVPClima.innerHTML = ""
+                let divClima = document.createElement(`ul`)
+                divClima.className = `clima`
+                divClima.innerHTML = `
         <span>${JSON.stringify(data.name)} ${JSON.stringify(data.sys.country)}</span>
         <span>Temp: ${JSON.stringify(data.main.temp)}°C, Humedad: %${JSON.stringify(data.main.humidity)}</span>`
-            divVPClima.append(divClima)
-        })
-        .catch(() => {
-            console.warn("La conexion con Open Weather no pudo concretarce. Reintentara mas tarde.")
-            divVPClima.innerHTML = ""
-            let divClima = document.createElement(`ul`)
-            divClima.className = `clima`
-            divClima.innerHTML = `
+                divVPClima.append(divClima)
+            })
+            .catch(() => {
+                console.warn("La conexion con Open Weather no pudo concretarce. Reintentara mas tarde.")
+                divVPClima.innerHTML = ""
+                let divClima = document.createElement(`ul`)
+                divClima.className = `clima`
+                divClima.innerHTML = `
         <ul class="clima">
                 <span>"Provincia" "PAIS"</span>
                 <span>Informacion climatica.</span>              
                 </ul>`
-            divVPClima.append(divClima)
-        })
-        .finally(() => {
-            i++
-            console.log(`Info ${i}: Clima actualizado.`)
+                divVPClima.append(divClima)
+            })
+            .finally(() => {
+                i++
+                console.log(`Info ${i}: Clima actualizado.`)
+                console.log(lat)
+                console.log(long)
 
-        })
+            })
+    }, 1000)
 }
-ciudadClima()
-setTimeout(() => {
-    mostrarClima(geo)
-    setInterval(() => {
-        mostrarClima()
-    }, 360000)
-}, 1500)
+
+
+    setTimeout(() => {
+        mostrarClima(geo)
+        setInterval(() => {
+            mostrarClima()
+        }, 360000)
+    }, 1500)
 
