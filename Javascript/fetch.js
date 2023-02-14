@@ -8,9 +8,9 @@ let datosArgentina = []
 let lat = ""
 let long = ""
 
-
-window.addEventListener('scroll', ()=> {  
 setTimeout(() => {
+    alert = ("Por favor, dar permisos de ubicacion para proporsionarte mejor calidad de informacion")
+    window.addEventListener('alert', ()=> {  
     navigator.geolocation.getCurrentPosition((position) => {
         lat = position.coords.latitude
         long = position.coords.longitude
