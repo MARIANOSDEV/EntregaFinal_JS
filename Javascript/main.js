@@ -14,6 +14,7 @@ let botonVaciarInputPago = document.getElementById("vaciarInputPago")
 let totalPago = document.getElementById("totalPago")
 
 
+
 //funciones principales
 
 function checkIngreso(func, array, array2) {
