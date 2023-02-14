@@ -14,9 +14,7 @@ setTimeout(() => {
     navigator.geolocation.getCurrentPosition((position) => {
         lat = position.coords.latitude
         long = position.coords.longitude
-        console.log(position)
     })
-    console.log(position)
     console.log(lat)
     console.log(long)
 },3000)})
