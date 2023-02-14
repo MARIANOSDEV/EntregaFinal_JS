@@ -5,6 +5,19 @@ let geo = ""
 let jsonClima = []
 let datosArgentina = []
 
+let lat = ""
+let long = ""
+
+setTimeout(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+        lat = position.coords.latitude
+        long = position.coords.longitude
+    })
+    console.log(lat)
+    console.log(long)
+},1000)
+
+
 async function ciudadClima() {
     if(JSON.parse(localStorage.getItem("geolocalizacion"))){}
     else{
