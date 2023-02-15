@@ -8,8 +8,15 @@ let datosArgentina = []
 let lat = ""
 let long = ""
 
+setTimeout(() => {
+async function probandoAsync(p){
+    let probando = await p
+    console.log(probando)
+}
+probandoAsync("ASYNC AWAIT OK")},2000)
 
-function mostrarClima() {
+
+async function mostrarClima() {
     navigator.geolocation.getCurrentPosition((position) => {
         lat = position.coords.latitude
         long = position.coords.longitude
@@ -34,25 +41,22 @@ function mostrarClima() {
                 divClima.innerHTML = `
         <ul class="clima">
                 <span>"Provincia" "PAIS"</span>
-                <span>Informacion climatica.</span>              
+                <span>Info Climatica.</span>              
                 </ul>`
                 divVPClima.append(divClima)
             })
             .finally(() => {
                 i++
                 console.log(`Info ${i}: Clima actualizado.`)
-                console.log(lat)
-                console.log(long)
-
             })
     }, 1000)
 }
 
 
     setTimeout(() => {
-        mostrarClima(geo)
+        mostrarClima()
         setInterval(() => {
             mostrarClima()
-        }, 360000)
-    }, 1500)
+        }, 120000)
+    }, 8000)
 

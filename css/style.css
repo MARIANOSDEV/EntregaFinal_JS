@@ -569,16 +569,26 @@ header {
 }
 
 #opcionesSocios {
-  display: flex;
+  display: grid;
   place-content: center;
+  grid-template-columns: 3fr 2fr 3fr;
+  grid-template-areas: "a1 a2 a3";
   margin-top: 10px;
   gap: 10px;
 }
 
 #consultaSocios {
+  display: flex;
+  justify-content: space-evenly;
+  grid-area: a2;
   font-size: calc(1em + 1.4vw);
   font-weight: bold;
   color: rgb(255, 0, 0);
+}
+
+#climas {
+  display: grid;
+  grid-area: a3;
 }
 
 .btn-danger {
