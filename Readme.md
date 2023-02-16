@@ -2,8 +2,8 @@
 Se intenta replicar un aplicativo web para administracion de socios.
 
 Menu:
-#### Acciones principales
-#### Extensiones y librerias utilizadas
+#### 1 -- Acciones principales
+#### 2 -- Extensiones y librerias utilizadas
 
 --------------------------------------------------
 
