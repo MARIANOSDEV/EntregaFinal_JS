@@ -1,22 +1,10 @@
 let i = 0
 let divVPClima = document.querySelector(`#climas`)
 
-let geo = ""
-let jsonClima = []
-let datosArgentina = []
+let lat;
+let long;
 
-let lat = ""
-let long = ""
-
-setTimeout(() => {
-async function probandoAsync(p){
-    let probando = await p
-    console.log(probando)
-}
-probandoAsync("ASYNC AWAIT OK")},2000)
-
-
-async function mostrarClima() {
+function mostrarClima() {
     navigator.geolocation.getCurrentPosition((position) => {
         lat = position.coords.latitude
         long = position.coords.longitude
@@ -53,10 +41,10 @@ async function mostrarClima() {
 }
 
 
-    setTimeout(() => {
+setTimeout(() => {
+    mostrarClima()
+    setInterval(() => {
         mostrarClima()
-        setInterval(() => {
-            mostrarClima()
-        }, 120000)
-    }, 8000)
+    }, 120000)
+}, 8000)
 
