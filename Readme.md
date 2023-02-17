@@ -1,6 +1,13 @@
 # Aplicativos para socios CAI.
 Se intenta replicar un aplicativo web para administracion de socios.
 
+Menu:
+#### 1 -- Acciones principales
+#### 2 -- Extensiones y librerias utilizadas
+
+--------------------------------------------------
+
+
 #### Acciones principales
 
 - Vista Socio Si o No (Evento toggle);
