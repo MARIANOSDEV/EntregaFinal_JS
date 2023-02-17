@@ -1,20 +1,4 @@
 #body-contacto
 {
-background-image:linear-gradient(red, white 50%, white 66%, red);
-}
-.mainform
-        {
-                display: flex;
-        flex-direction: column;
-        margin: 5px;
-        align-items: center;
-        justify-content: center;       
 
-        .mainform--content
-            {
-            display: flex;
-            flex-direction: column;
-            margin: 10px;
-            width: 40%; 
-            }
 }

@@ -506,6 +506,7 @@ header {
   .formularios #formularioAsociate {
     display: grid;
     grid-area: a2;
+    gap: 5px;
     place-self: center;
     width: 95%;
     color: red;
@@ -516,6 +517,32 @@ header {
     margin: 5px;
     font-size: calc(0.3em + 1.2vw);
     font-weight: bold;
+  }
+  .formularios button#botonAsociarse {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    font-size: calc(0.5em + 1vw);
+    font-weight: bold;
+    color: red;
+    position: relative;
+    border-radius: 12px;
+    margin: 10px;
+  }
+  .formularios button#botonAsociarse::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, red, rgb(210, 105, 0), rgb(223, 0, 63), rgb(172, 0, 0), red, rgb(210, 105, 0), rgb(223, 0, 63), rgb(172, 0, 0));
+    background-size: 800%;
+    border-radius: 10px;
+    filter: blur(8px);
+    -webkit-animation: glowing 20s linear infinite;
+    animation: glowing 20s linear infinite;
   }
 }
 @media screen and (max-width: 576px) {
@@ -625,33 +652,6 @@ td {
 
 .btn-close {
   text-align: center !important;
-}
-
-button#botonAsociarse {
-  cursor: pointer;
-  border: none;
-  padding: 10px 20px;
-  font-size: calc(0.5em + 1vw);
-  font-weight: bold;
-  color: red;
-  position: relative;
-  border-radius: 12px;
-}
-
-button#botonAsociarse::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, red, rgb(210, 105, 0), rgb(223, 0, 63), rgb(172, 0, 0), red, rgb(210, 105, 0), rgb(223, 0, 63), rgb(172, 0, 0));
-  background-size: 800%;
-  border-radius: 10px;
-  filter: blur(8px);
-  -webkit-animation: glowing 20s linear infinite;
-  animation: glowing 20s linear infinite;
 }
 
 #cierreAnimado {
@@ -935,21 +935,4 @@ footer p {
     color: RED;
     font-size: 1.8vw;
   }
-}
-#body-contacto {
-  background-image: linear-gradient(red, white 50%, white 66%, red);
-}
-
-.mainform {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  align-items: center;
-  justify-content: center;
-}
-.mainform .mainform--content {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  width: 40%;
 }

@@ -12,6 +12,7 @@ let indicaCuotaValor = document.getElementById("indicaCuotaValor")
 let botonAbonar = document.getElementById("botonAbonar")
 let botonVaciarInputPago = document.getElementById("vaciarInputPago")
 let totalPago = document.getElementById("totalPago")
+let botonAdmin = document.getElementById("botonAdmin")
 
 
 
@@ -63,7 +64,10 @@ function ingresarPago() {
         resetFormularioPago()
         Swal.fire('Error N° de socio // Cantidad de abonos incorrecta.', '', 'error')
     }
-    else {
+    else if(buscarSocios(socios, formPago[0].value).ultimoAnioPago == "Baja Solicitada"){
+        Swal.fire('Error. Usted ha solicitado la baja, por favor enviar mail a adminSocios@cai.com.ar', '', 'error')
+        }
+    else{
         let total = buscarSocios(socios, formPago[0].value).cuotaValor * formPago[1].value
         Swal.fire({
             title: `Socio N° ${formPago[0].value}. Confirma el pago?
@@ -125,7 +129,7 @@ function consultarPadronSocios(tomaArray, tomaArrayBaja) {
     tomaArray.forEach((asociado) => {
         document.getElementById(`eliminar${asociado.id}`).addEventListener("click", () => {
             Swal.fire({
-                title: `Socio N°${asociado.id}: Esta seguro que quiere darse de baja?`,
+                title: `Socio N°${asociado.id}: Esta seguro que quiere solicitar la baja?`,
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: 'Confirmar',
@@ -135,21 +139,20 @@ function consultarPadronSocios(tomaArray, tomaArrayBaja) {
             }).then((result) => {
                 if (result.isConfirmed) {
                     let lineaInfo = document.getElementById(`elementoPadron${asociado.id}`)
+                    asociado.ultimoAnioPago = "Baja Solicitada"
                     lineaInfo.remove()
-                    let posicion = socios.indexOf(asociado)
-                    const bajasSocioStorage = new SocioBaja(asociado.id, asociado.nombre, asociado.categoria, asociado.cuotaValor, asociado.ultimoAnioPago)
-                    socios.splice(posicion, 1)
-                    sociosBaja.push(bajasSocioStorage)
                     localStorage.setItem("padron", JSON.stringify(socios))
                     localStorage.setItem("sociosBaja", JSON.stringify(sociosBaja))
                     Swal.fire({
-                        title: "Baja confirmada. Esperamos pueda volver pronto.",
+                        title: `Se ha enviado la solicitud de baja a la administracion.
+                        Demora aproximada 48hs.
+                        Si quiere cancelar la baja por favor enviar un e-mail a adminSocios@cai.com.ar`,
                         confirmButtonColor: '#ff0000',
                         icon: 'success'
                     })
                 } else if (result.isDenied) {
                     Swal.fire({
-                        title: "Baja cancelada.",
+                        title: "Solicitud de baja cancelada.",
                         confirmButtonColor: '#ff0000',
                         icon: 'info'
                     })
@@ -302,6 +305,11 @@ function cuotaPorCategoria(rangoEdad) {
     }
 }
 
+function logAdmin(){
+    admin == passAdmin
+    ? window.location.href = `admin.html`
+    : alert("fuera intruso")
+}
 
 //DOM
 
@@ -342,5 +350,6 @@ botonAbonar.onclick = () => {
 botonVaciarInputPago.onclick = () => {
     resetFormularioPago()
 }
-//
-
+botonAdmin.onclick = () => {
+    logAdmin()
+}

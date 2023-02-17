@@ -1,4 +1,3 @@
-[TOC]
 # Aplicativos para socios CAI.
 Se intenta replicar un aplicativo web para administracion de socios.
 

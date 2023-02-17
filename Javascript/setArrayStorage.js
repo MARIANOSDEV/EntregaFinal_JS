@@ -1,5 +1,7 @@
 //Seteo primera vez.
 let socios = []
+let admin = "admin"
+let passAdmin = "admin"
 
 if(localStorage.getItem("padron"))  {
     for (let socio of JSON.parse(localStorage.getItem("padron"))){

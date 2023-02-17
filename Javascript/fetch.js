@@ -4,10 +4,12 @@ let divVPClima = document.querySelector(`#climas`)
 let lat;
 let long;
 
+
 function mostrarClima() {
     navigator.geolocation.getCurrentPosition((position) => {
         lat = position.coords.latitude
         long = position.coords.longitude
+
     })
     setTimeout(() => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=sp&appid=60703eaf0cf50845cb062140932336a9&units=metric`)
@@ -37,7 +39,7 @@ function mostrarClima() {
                 i++
                 console.log(`Info ${i}: Clima actualizado.`)
             })
-    }, 1000)
+    }, 500)
 }
 
 
@@ -46,5 +48,4 @@ setTimeout(() => {
     setInterval(() => {
         mostrarClima()
     }, 120000)
-}, 8000)
-
+}, 2000)
