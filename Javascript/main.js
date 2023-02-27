@@ -111,21 +111,6 @@ function consultarPadronSocios(tomaArray, tomaArrayBaja) {
         `
         sociosDiv.append(verSocio)
     }
-    for (let asociado1 of tomaArrayBaja) {
-        let verSocio = document.createElement("tr")
-        verSocio.id = `elementoPadron${asociado1.id}`
-        verSocio.className = `inactivo`
-        verSocio.innerHTML = `
-
-        <th scope="row">${asociado1.id}</th>
-        <td>${asociado1.nombre}</td>
-        <td>${asociado1.categoria}</td>
-        <td>$${asociado1.cuotaValor}</td>
-        <td>Inactivo</td>
-        <td>Socio de baja</td>
-        `
-        sociosDiv.append(verSocio)
-    }
     tomaArray.forEach((asociado) => {
         document.getElementById(`eliminar${asociado.id}`).addEventListener("click", () => {
             Swal.fire({
