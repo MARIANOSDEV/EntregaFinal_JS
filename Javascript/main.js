@@ -12,7 +12,7 @@ let indicaCuotaValor = document.getElementById("indicaCuotaValor")
 let botonAbonar = document.getElementById("botonAbonar")
 let botonVaciarInputPago = document.getElementById("vaciarInputPago")
 let totalPago = document.getElementById("totalPago")
-let botonAdmin = document.getElementById("botonAdmin")
+
 
 
 
@@ -305,11 +305,7 @@ function cuotaPorCategoria(rangoEdad) {
     }
 }
 
-function logAdmin(){
-    admin == passAdmin
-    ? window.location.href = `admin.html`
-    : alert("fuera intruso")
-}
+
 
 //DOM
 
@@ -349,7 +345,4 @@ botonAbonar.onclick = () => {
 }
 botonVaciarInputPago.onclick = () => {
     resetFormularioPago()
-}
-botonAdmin.onclick = () => {
-    logAdmin()
 }

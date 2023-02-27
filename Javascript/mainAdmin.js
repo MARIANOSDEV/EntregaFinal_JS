@@ -1,6 +1,7 @@
 let sociosDiv = document.getElementById("sociosDiv")
 let botonPadron = document.getElementById("botonesPadron")
 let searchSocioNumero = document.getElementById("buscarSocioNumero")
+let botonDeslog = document.getElementById("botonDeslog")
 
 
 //funciones principales
@@ -136,6 +137,11 @@ searchSocioNumero.addEventListener("input", () => {
 searchSocioNumero.addEventListener("focus", () => {
     buscarSocioPorNumero(searchSocioNumero.value)
 })
+botonDeslog.onclick = () => {
+    window.location.href = `../index.html`
+    sessionStorage.clear()
+}
 
 
 //
+botonDeslog
