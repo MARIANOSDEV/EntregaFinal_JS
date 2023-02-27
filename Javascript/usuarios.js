@@ -8,11 +8,11 @@ if(sessionStorage.getItem("password"))  {
     passAdmin = sessionStorage.getItem("password")
 }
 
-
+console.log(window.location.pathname)
 async function logAdmin(){
     if(admin == passAdmin){
         if(window.location.pathname == "/index.html"){
-        window.location.href = `/html/admin.html`
+        window.location.href = `./html/admin.html`
         }
         else{ window.location.href = `admin.html`
         }}
