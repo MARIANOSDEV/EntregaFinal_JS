@@ -9,10 +9,11 @@ if(sessionStorage.getItem("password"))  {
 }
 
 console.log(window.location.pathname)
+
 async function logAdmin(){
     if(admin == passAdmin){
-        if(window.location.pathname == "/index.html"){
-        window.location.href = `./html/admin.html`
+        if(window.location.pathname == "/EntregaFinal_JS/index.html"){
+        window.location.href = `/EntregaFinal_JS/html/admin.html`
         }
         else{ window.location.href = `admin.html`
         }}
