@@ -8,9 +8,51 @@ if(sessionStorage.getItem("password"))  {
     passAdmin = sessionStorage.getItem("password")
 }
 
-console.log(window.location.pathname)
-
 async function logAdmin(){
+    if(location.port == 5500){
+        if(admin == passAdmin){
+            if(window.location.pathname == "/index.html"){
+            window.location.href = `/html/admin.html`
+            }
+            else{ window.location.href = `admin.html`
+            }}
+        else{
+            const { value: password } = await Swal.fire({
+                title: 'Ingrese su contraseña de administrador',
+                input: 'password',
+                inputPlaceholder: 'UAT contraseña = admin',
+                confirmButtonColor: '#ff0000',
+                inputAttributes: {
+                  maxlength: 10,
+                  autocapitalize: 'off',
+                  autocorrect: 'off',
+                  
+                }
+              })
+              
+              if (password == admin) {
+                passAdmin = `${password}`
+                sessionStorage.setItem("password", `${password}`)
+                if(window.location.pathname == "/index.html"){
+                    window.location.href = `/html/admin.html`
+                    }
+                    else{ window.location.href = `admin.html`
+                    }
+              }
+              else{
+                if (password) {
+                    Swal.fire({
+                        title: "Contraseña incorrecta.",
+                        confirmButtonColor: '#ff0000',
+                    })
+                  }
+              }
+    
+        }
+    
+
+    }
+    else{
     if(admin == passAdmin){
         if(window.location.pathname == "/EntregaFinal_JS/index.html"){
         window.location.href = `/EntregaFinal_JS/html/admin.html`
@@ -34,8 +76,8 @@ async function logAdmin(){
           if (password == admin) {
             passAdmin = `${password}`
             sessionStorage.setItem("password", `${password}`)
-            if(window.location.pathname == "/index.html"){
-                window.location.href = `/html/admin.html`
+            if(window.location.pathname == "/EntregaFinal_JS/index.html"){
+                window.location.href = `/EntregaFinal_JS/html/admin.html`
                 }
                 else{ window.location.href = `admin.html`
                 }
@@ -49,7 +91,7 @@ async function logAdmin(){
               }
           }
 
-    }
+    }}
 }
 
 botonAdmin.onclick = () => {
