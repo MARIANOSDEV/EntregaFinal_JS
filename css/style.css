@@ -546,11 +546,13 @@ header {
   }
 }
 @media screen and (max-width: 576px) {
+  tr {
+    display: flex;
+  }
+  tr th {
+    padding: 0 !important;
+  }
   .formularios {
-    display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 1fr;
-    grid-template-areas: "a1" "a2";
     place-self: center;
     margin: 5px;
   }

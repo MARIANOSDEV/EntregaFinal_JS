@@ -225,7 +225,7 @@ function buscarSocioPorNumero(parametro) {
     if (parametro == "") {
         noBuscado()
     }
-    else if (buscar.length == 0 && isNaN(parametro)) { noEncontrado() }
+    else if (buscar.length == 0 || isNaN(parametro)) { noEncontrado() }
     else {
         consultarPadronSocios(buscar, [])
         return buscar

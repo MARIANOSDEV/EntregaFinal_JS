@@ -4,94 +4,41 @@ let botonAdmin = document.getElementById("botonAdmin")
 
 
 
-if(sessionStorage.getItem("password"))  {
+if (sessionStorage.getItem("password")) {
     passAdmin = sessionStorage.getItem("password")
 }
 
-async function logAdmin(){
-    if(location.port == 5500){
-        if(admin == passAdmin){
-            if(window.location.pathname == "/index.html"){
-            window.location.href = `/html/admin.html`
-            }
-            else{ window.location.href = `admin.html`
-            }}
-        else{
-            const { value: password } = await Swal.fire({
-                title: 'Ingrese su contraseña de administrador',
-                input: 'password',
-                inputPlaceholder: 'UAT contraseña = admin',
-                confirmButtonColor: '#ff0000',
-                inputAttributes: {
-                  maxlength: 10,
-                  autocapitalize: 'off',
-                  autocorrect: 'off',
-                  
-                }
-              })
-              
-              if (password == admin) {
-                passAdmin = `${password}`
-                sessionStorage.setItem("password", `${password}`)
-                if(window.location.pathname == "/index.html"){
-                    window.location.href = `/html/admin.html`
-                    }
-                    else{ window.location.href = `admin.html`
-                    }
-              }
-              else{
-                if (password) {
-                    Swal.fire({
-                        title: "Contraseña incorrecta.",
-                        confirmButtonColor: '#ff0000',
-                    })
-                  }
-              }
-    
-        }
-    
-
+async function logAdmin() {
+    if (admin == passAdmin) {
+        window.location.href = `admin.html`
     }
-    else{
-    if(admin == passAdmin){
-        if(window.location.pathname == "/EntregaFinal_JS/index.html"){
-        window.location.href = `/EntregaFinal_JS/html/admin.html`
-        }
-        else{ window.location.href = `admin.html`
-        }}
-    else{
+    else {
         const { value: password } = await Swal.fire({
             title: 'Ingrese su contraseña de administrador',
             input: 'password',
             inputPlaceholder: 'UAT contraseña = admin',
             confirmButtonColor: '#ff0000',
             inputAttributes: {
-              maxlength: 10,
-              autocapitalize: 'off',
-              autocorrect: 'off',
-              
+                maxlength: 10,
+                autocapitalize: 'off',
+                autocorrect: 'off',
             }
-          })
-          
-          if (password == admin) {
+        })
+        if (password == admin) {
             passAdmin = `${password}`
             sessionStorage.setItem("password", `${password}`)
-            if(window.location.pathname == "/EntregaFinal_JS/index.html"){
-                window.location.href = `/EntregaFinal_JS/html/admin.html`
-                }
-                else{ window.location.href = `admin.html`
-                }
-          }
-          else{
+            window.location.href = `admin.html`
+        }
+        else {
             if (password) {
                 Swal.fire({
                     title: "Contraseña incorrecta.",
                     confirmButtonColor: '#ff0000',
                 })
-              }
-          }
+            }
+        }
 
-    }}
+    }
 }
 
 botonAdmin.onclick = () => {

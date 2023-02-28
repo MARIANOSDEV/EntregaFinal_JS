@@ -16,7 +16,7 @@ Menu:
 - Busqueda por Numero de socio y Nombre (socios);
 - Comprar abonos (socios);
 - Darse de baja (socios: solo puede hacer la solicitud, la baja efectiva debe darla un administrador del club);
-- Funcion de administrador: se ingresa desde el candado del footer. Debe ingresar la contraseña. desde el aplicativo puede efectivizar las solicitudes de los socios y consultar el padron de socios dados de baja. Desde la funcion admin, puede desconectarse manualmente desde el candado o bien se desconectara al terminar la sesion activa.
+- Funcion de administrador: se ingresa desde el candado del footer en page socios. Debe ingresar la contraseña. desde el aplicativo puede efectivizar las solicitudes de los socios y consultar el padron de socios dados de baja. Desde la funcion admin, puede desconectarse manualmente desde el candado o bien se desconectara al terminar la sesion activa.
 - API Clima (geolocalizacion con API incluida en objeto global);
 
 #### Extensiones y librerias utilizadas

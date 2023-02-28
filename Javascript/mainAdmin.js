@@ -138,7 +138,7 @@ searchSocioNumero.addEventListener("focus", () => {
     buscarSocioPorNumero(searchSocioNumero.value)
 })
 botonDeslog.onclick = () => {
-    window.location.href = `../index.html`
+    window.location.href = `socios.html`
     sessionStorage.clear()
 }
 
